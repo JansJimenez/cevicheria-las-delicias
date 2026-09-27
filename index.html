@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cevichería Las Delicias | Bar - Cevichería La Curva</title>
+  <meta name="description" content="El mejor sabor marino y pesca del día en Bar - Cevichería La Curva 'Las Delicias'. Ceviches, jaleas, causas, arroces con mariscos y cocteles. ¡Pide directo por WhatsApp!">
+
+  <!-- Favicon con el logo oficial -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts: Fredoka (encabezados redondeados y amigables) + Plus Jakarta Sans (cuerpo moderno y legible) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5 (Iconos de alta calidad) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Estilos del Proyecto -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       BARRA SUPERIOR DE AVISOS Y PROMOCIONES
+       ========================================================================== -->
+  <aside class="top-announcement" aria-label="Avisos y Promociones">
+    <div class="top-promo-text">
+      <span class="badge-promo"><i class="fa-solid fa-bolt"></i> ¡PROMO DELIVERY!</span>
+      Envío <strong>GRATIS</strong> en pedidos mayores a <strong>S/ 60.00</strong> en toda la zona.
+    </div>
+    <div class="top-contact-links">
+      <span><i class="fa-regular fa-clock"></i> Martes a Domingo: 11:00 AM - 6:00 PM</span>
+      <a href="https://wa.me/51987654321" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> WhatsApp: +51 987 654 321
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       HEADER & NAVEGACIÓN
+       ========================================================================== -->
+  <header class="site-header" id="topHeader">
+    <div class="header-container">
+      <!-- Logotipo de la Cevichería -->
+      <a href="#inicio" class="brand-wrapper" aria-label="Inicio Las Delicias">
+        <img src="assets/logo.png" alt="Logo Cevichería Las Delicias - Bar La Curva" class="brand-logo-img">
+        <div class="brand-text-block">
+          <span class="brand-title">Las <span>Delicias</span></span>
+          <span class="brand-subtitle">Bar - Cevichería La Curva</span>
+        </div>
+      </a>
+
+      <!-- Menú de Navegación Principal -->
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+          <li><a href="#la-carta" class="nav-link">Nuestra Carta</a></li>
+          <li><a href="#promociones" class="nav-link">Combos Marinos</a></li>
+          <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+          <li><a href="#ubicacion" class="nav-link">Ubicación & Horarios</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botones de Acción en el Header -->
+      <div class="header-actions">
+        <!-- Botón Ver Carrito -->
+        <button class="btn-header-cart" id="btnHeaderCart" onclick="openCartDrawer()" aria-label="Abrir Carrito de compras">
+          <i class="fa-solid fa-basket-shopping" style="color: var(--color-primary-blue);"></i>
+          <span>Carrito</span>
+          <span class="cart-counter-badge" id="headerCartBadge">0</span>
+        </button>
+
+        <!-- Botón WhatsApp Directo -->
+        <a href="https://wa.me/51987654321?text=Hola%20Cevicheria%20Las%20Delicias,%20deseo%20hacer%20una%20consulta" target="_blank" rel="noopener" class="btn-header-whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Pedir por WhatsApp</span>
+        </a>
+
+        <!-- Botón Toggle Menú Móvil -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Abrir menú de navegación">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO BANNER
+       ========================================================================== -->
+  <section class="hero-section" id="inicio">
+    <div class="hero-bg-shapes">
+      <div class="sun-glow"></div>
+      <i class="fa-solid fa-fish floating-sea-icon floating-icon-1"></i>
+      <i class="fa-solid fa-shrimp floating-sea-icon floating-icon-2"></i>
+      <i class="fa-solid fa-water floating-sea-icon floating-icon-3"></i>
+    </div>
+
+    <div class="hero-container">
+      <!-- Texto Hero -->
+      <div class="hero-content-col">
+        <div class="hero-badge-tag">
+          <i class="fa-solid fa-certificate"></i> ¡El Auténtico Sabor del Mar Peruano!
+        </div>
+
+        <h1 class="hero-title">
+          Pescados y Mariscos <span class="highlight-gold">Frescos</span> con la Mejor Sazón en <span class="highlight-orange">La Curva</span>
+        </h1>
+
+        <p class="hero-description">
+          Disfruta de nuestros generosos ceviches curados al momento con limones seleccionados del norte, jaleas crujientes, causas de pulpa y cocteles refrescantes. ¡Elige tus platillos y haz tu pedido al instante por WhatsApp!
+        </p>
+
+        <div class="hero-cta-group">
+          <button class="btn-primary-order" onclick="scrollToMenu()">
+            <i class="fa-solid fa-utensils"></i> Explorar la Carta
+          </button>
+          <a href="https://wa.me/51987654321?text=Hola%20Cevicheria%20Las%20Delicias%20La%20Curva,%20quisiera%20hacer%20un%20pedido%20directo" target="_blank" rel="noopener" class="btn-secondary-wa">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> WhatsApp Directo
+          </a>
+        </div>
+
+        <!-- Badges de Confianza -->
+        <div class="hero-guarantees">
+          <div class="guarantee-item">
+            <i class="fa-solid fa-anchor"></i>
+            <span>Pesca del Día 100% Fresca</span>
+          </div>
+          <div class="guarantee-item">
+            <i class="fa-solid fa-motorcycle"></i>
+            <span>Delivery Rápido en tu Zona</span>
+          </div>
+          <div class="guarantee-item">
+            <i class="fa-solid fa-award"></i>
+            <span>Receta Tradicional Marina</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen Visual Hero con Logo Flotante -->
+      <div class="hero-visual-card">
+        <div class="hero-main-frame">
+          <img src="https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?w=1000&auto=format&fit=crop&q=85" alt="Plato de Ceviche Peruano de Pescado Fresco" loading="eager">
+        </div>
+
+        <!-- Sello / Medallón del Logo Oficial -->
+        <div class="floating-logo-badge" title="Cevichería Las Delicias - Bar La Curva">
+          <img src="assets/logo.png" alt="Logo Las Delicias">
+        </div>
+
+        <!-- Pill de Calificación -->
+        <div class="floating-review-pill">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <div>
+            <div class="review-text-title">4.9 / 5.0 en Sabor</div>
+            <div class="review-text-sub">Más de 500 comensales satisfechos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divisor de Ondas hacia la siguiente sección -->
+    <div class="wave-divider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       HIGHLIGHTS / PILARES (ELEMENTOS MARINOS DEL LOGO)
+       ========================================================================== -->
+  <section class="features-ribbon" aria-label="Nuestras ventajas">
+    <div class="features-container">
+      <div class="feature-box">
+        <div class="feature-icon-wrapper">
+          <i class="fa-solid fa-fish-fins"></i>
+        </div>
+        <div class="feature-info">
+          <h4>Pesca 100% Marina</h4>
+          <p>Seleccionada cada madrugada en el terminal pesquero.</p>
+        </div>
+      </div>
+
+      <div class="feature-box">
+        <div class="feature-icon-wrapper">
+          <i class="fa-solid fa-lemon"></i>
+        </div>
+        <div class="feature-info">
+          <h4>Limones Norteños</h4>
+          <p>Exprimidos a mano al instante, sin amargor, sabor puro.</p>
+        </div>
+      </div>
+
+      <div class="feature-box">
+        <div class="feature-icon-wrapper">
+          <i class="fa-solid fa-bowl-food"></i>
+        </div>
+        <div class="feature-info">
+          <h4>Porciones Generosas</h4>
+          <p>Servido con bastante camote, choclo tierno y canchita.</p>
+        </div>
+      </div>
+
+      <div class="feature-box">
+        <div class="feature-icon-wrapper">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+        <div class="feature-info">
+          <h4>Pedidos por WhatsApp</h4>
+          <p>Arma tu carrito y envía tu orden directa sin complicaciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       COMBOS MARINOS DESTACADOS
+       ========================================================================== -->
+  <section class="promo-strip-section" id="promociones">
+    <div class="promo-container">
+      <div class="promo-card-grid">
+        <!-- Promo 1: Dúo Marino -->
+        <div class="promo-banner-card promo-card-1">
+          <div>
+            <span class="promo-pill">⭐ COMBO PAREJA</span>
+            <h3>Dúo Marino Clásico</h3>
+            <p>1/2 Ceviche Mixto bien taipá + 1/2 Chicharrón de Pescado con yucas doradas y salsa tártara casera.</p>
+          </div>
+          <div class="promo-pricing-cta">
+            <div class="promo-price-tag">
+              <small>S/ 48.00</small> S/ 42.00
+            </div>
+            <button class="btn-promo-add" onclick="addToCart('duo-marino')">
+              <i class="fa-solid fa-cart-plus"></i> Pedir Combo
+            </button>
+          </div>
+        </div>
+
+        <!-- Promo 2: Trío Las Delicias -->
+        <div class="promo-banner-card promo-card-2">
+          <div>
+            <span class="promo-pill">🔥 EL FAVORITO DE LA CURVA</span>
+            <h3>Trío Marino Las Delicias</h3>
+            <p>Ceviche Clásico + Arroz con Mariscos humeante con queso parmesano + Chicharrón de Calamar crocante.</p>
+          </div>
+          <div class="promo-pricing-cta">
+            <div class="promo-price-tag">
+              <small>S/ 60.00</small> S/ 52.00
+            </div>
+            <button class="btn-promo-add" onclick="addToCart('trio-las-delicias')">
+              <i class="fa-solid fa-cart-plus"></i> Pedir Combo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       LA CARTA MARINA INTERACTIVA (CATÁLOGO DE PLATILLOS)
+       ========================================================================== -->
+  <main class="menu-section" id="la-carta">
+    <div class="section-header">
+      <span class="section-subtitle-badge">Nuestra Carta Completa</span>
+      <h2 class="section-title">Elige tus Platillos <span>Favoritos</span></h2>
+      <p class="section-desc">
+        Todos nuestros platillos cuentan con foto referencial e ingredientes frescos. Agrégalos a tu carrito y haz tu pedido directo por WhatsApp con entrega rápida.
+      </p>
+    </div>
+
+    <!-- Barra de Búsqueda y Filtros de Categoría -->
+    <div class="menu-controls-wrapper">
+      <!-- Buscador en tiempo real -->
+      <div class="menu-search-box">
+        <input type="text" id="menuSearchInput" class="menu-search-input" placeholder="🔍 Buscar ceviche, jalea, arroz, causa, bebida...">
+        <button class="search-icon-btn" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+
+      <!-- Filtros por Categoría -->
+      <div class="category-tabs-container" role="tablist">
+        <button class="category-tab-btn active" data-category="all" role="tab">
+          <i class="fa-solid fa-border-all"></i> Todos los Platos
+        </button>
+        <button class="category-tab-btn" data-category="ceviches" role="tab">
+          <i class="fa-solid fa-fish"></i> Ceviches & Tiraditos
+        </button>
+        <button class="category-tab-btn" data-category="chicharrones" role="tab">
+          <i class="fa-solid fa-drumstick-bite"></i> Chicharrones & Jaleas
+        </button>
+        <button class="category-tab-btn" data-category="arroces" role="tab">
+          <i class="fa-solid fa-bowl-rice"></i> Arroces & Calientes
+        </button>
+        <button class="category-tab-btn" data-category="causas" role="tab">
+          <i class="fa-solid fa-seedling"></i> Causas & Entradas
+        </button>
+        <button class="category-tab-btn" data-category="combos" role="tab">
+          <i class="fa-solid fa-star"></i> Dúos & Tríos
+        </button>
+        <button class="category-tab-btn" data-category="bebidas" role="tab">
+          <i class="fa-solid fa-wine-glass"></i> Bar & Bebidas
+        </button>
+      </div>
+    </div>
+
+    <!-- Grilla Dinámica de Platillos (Generada por app.js) -->
+    <section class="dishes-grid" id="dishesGrid" aria-label="Lista de Platillos del Menú">
+      <!-- Renderizado por JavaScript -->
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       SECCIÓN SOBRE NOSOTROS & HISTORIA "LA CURVA"
+       ========================================================================== -->
+  <section class="about-section" id="nosotros">
+    <div class="about-container">
+      <div class="about-visual-box">
+        <img src="assets/logo.png" alt="Logo Cevichería Las Delicias - Bar La Curva" class="about-logo-hero">
+        <div class="about-badge-since">
+          <span>🐟 Tradición & Sabor</span>
+        </div>
+      </div>
+
+      <div class="about-content-box">
+        <span class="section-subtitle-badge">Nuestra Pasión Marina</span>
+        <h2>Sabor, Frescura y Alegría en <span>Bar - Cevichería La Curva</span></h2>
+        <p>
+          En <strong>Las Delicias</strong> nació una promesa: rendir tributo a la riqueza del litoral peruano con recetas auténticas, porciones generosas y la alegría contagiosa de nuestra gente costeña.
+        </p>
+        <p>
+          Nuestro chef selecciona personalmente la pesca cada mañana, garantizando pescado firme y mariscos jugosos curados con el mejor limón sutil norteño. Cada plato que sale de nuestra cocina lleva el amor por la gastronomía marina peruana.
+        </p>
+
+        <div class="about-pillars">
+          <div class="pillar-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <h5>Receta Secreta de Leche de Tigre</h5>
+              <p>Equilibrada, aromática y con el picor exacto para deleitar tu paladar.</p>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <h5>Ambiente Familiar & Bar</h5>
+              <p>Ideal para disfrutar un almuerzo marino con chilcanos y pisco sour.</p>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <h5>Higiene & Calidad Certificada</h5>
+              <p>Máxima pulcritud y protocolos estrictos en cada preparación.</p>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <h5>Delivery Seguro & Empaques Térmicos</h5>
+              <p>Llega a tu casa frío lo frío y caliente y crocante lo frito.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TESTIMONIOS DE CLIENTES
+       ========================================================================== -->
+  <section class="testimonials-section">
+    <div class="section-header">
+      <span class="section-subtitle-badge">Opiniones de Nuestros Clientes</span>
+      <h2 class="section-title">Lo que Dicen Quienes ya <span>Probaron</span></h2>
+      <p class="section-desc">La satisfacción y las sonrisas de nuestros clientes son nuestro mejor reconocimiento.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-rating">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testimonial-quote">
+          "El Ceviche Carretillero es una maravilla absoluta. El chicharrón de calamar llegó súper crocante y el ceviche bien fresco con su ají en su punto. ¡El pedido por WhatsApp fue rapidísimo!"
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">CM</div>
+          <div class="author-info">
+            <h6>Carlos Mendoza</h6>
+            <span>Cliente Frecuente (Delivery)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-rating">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testimonial-quote">
+          "Pedimos la Ronda Marina 4 Sabores para el almuerzo familiar del domingo. Alcanzó para todos y nos sobró. El arroz con mariscos tiene ese saborcito criollo ahumado delicioso. Muy recomendado."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">LV</div>
+          <div class="author-info">
+            <h6>Lucía Valdivia</h6>
+            <span>Almuerzo Familiar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-rating">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testimonial-quote">
+          "Excelente atención en La Curva. La jarra de chicha morada es 100% natural, nada de polvos. Y el ceviche clásico con bastante canchita y camote glaseado es insuperable."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JR</div>
+          <div class="author-info">
+            <h6>Jorge Ramírez</h6>
+            <span>Comensal en Local</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       UBICACIÓN, HORARIOS & ATENCIÓN
+       ========================================================================== -->
+  <section class="location-section" id="ubicacion">
+    <div class="section-header">
+      <span class="section-subtitle-badge">Visítanos o Pide a Casa</span>
+      <h2 class="section-title">Estamos Listos para <span>Atenderte</span></h2>
+    </div>
+
+    <div class="location-container">
+      <div class="location-info-card">
+        <h3>Bar - Cevichería La Curva</h3>
+        
+        <div class="info-item-row">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <div>
+            <h5>Nuestra Dirección</h5>
+            <p>Av. Malecón Costero 1240, La Curva, Costa Peruana.<br>(A media cuadra de la bajada principal a la playa)</p>
+          </div>
+        </div>
+
+        <div class="info-item-row">
+          <i class="fa-solid fa-clock"></i>
+          <div>
+            <h5>Horario de Cocina y Bar</h5>
+            <p><strong>Martes a Domingo:</strong> 11:00 AM – 6:00 PM<br><strong>Lunes:</strong> Cerrado por descanso y mantenimiento</p>
+          </div>
+        </div>
+
+        <div class="info-item-row">
+          <i class="fa-solid fa-phone"></i>
+          <div>
+            <h5>Central Telefónica & WhatsApp</h5>
+            <p>+51 987 654 321 / (01) 456-7890</p>
+          </div>
+        </div>
+
+        <div class="info-item-row">
+          <i class="fa-solid fa-wallet"></i>
+          <div>
+            <h5>Medios de Pago Aceptados</h5>
+            <p>Yape, Plin, Efectivo, Tarjetas Visa, Mastercard y transferencia.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mapa interactivo referencial de la zona costera -->
+      <div class="map-embed-wrapper">
+        <iframe 
+          title="Ubicación Cevicheria Las Delicias La Curva"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.3262612711677!2d-77.0368731!3d-12.0463731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDAyJzQ3LjAiUyA3N8KwMDInMTIuNyJX!5e0!3m2!1ses!2spe!4v1620000000000!5m2!1ses!2spe" 
+          width="600" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER OFICIAL
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand-box">
+        <div class="footer-logo-wrap">
+          <img src="assets/logo.png" alt="Logo Las Delicias" class="footer-logo-img">
+          <div class="footer-brand-title">Las <span>Delicias</span></div>
+        </div>
+        <p class="footer-desc">
+          Bar - Cevichería La Curva. Especialistas en pescados y mariscos preparados con la pesca más fresca y el amor por la cocina marina del Perú.
+        </p>
+        <div class="footer-social-links">
+          <a href="#" class="footer-social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="footer-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="footer-social-btn" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://wa.me/51987654321" target="_blank" rel="noopener" class="footer-social-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Nuestra Carta</h4>
+        <ul class="footer-links">
+          <li><a href="#la-carta" onclick="currentCategory='ceviches'; renderMenu();">Ceviches & Tiraditos</a></li>
+          <li><a href="#la-carta" onclick="currentCategory='chicharrones'; renderMenu();">Jaleas & Chicharrones</a></li>
+          <li><a href="#la-carta" onclick="currentCategory='arroces'; renderMenu();">Arroces con Mariscos</a></li>
+          <li><a href="#la-carta" onclick="currentCategory='causas'; renderMenu();">Causas Criollas</a></li>
+          <li><a href="#la-carta" onclick="currentCategory='bebidas'; renderMenu();">Chilcanos & Cocteles</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Enlaces Rápidos</h4>
+        <ul class="footer-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#promociones">Combos Especiales</a></li>
+          <li><a href="#nosotros">Nuestra Historia</a></li>
+          <li><a href="#ubicacion">Horarios y Ubicación</a></li>
+          <li><a href="javascript:void(0)" onclick="openCartDrawer()">Ver mi Carrito</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Pedidos por WhatsApp</h4>
+        <p class="footer-desc" style="margin-bottom: 12px;">
+          Haz tus pedidos para delivery o recojo directo por WhatsApp de forma rápida y sencilla.
+        </p>
+        <a href="https://wa.me/51987654321?text=Hola%20Cevicheria%20Las%20Delicias,%20deseo%20hacer%20un%20pedido" target="_blank" rel="noopener" class="btn-header-whatsapp" style="display: inline-flex;">
+          <i class="fa-brands fa-whatsapp"></i> +51 987 654 321
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Cevichería Las Delicias - Bar - Cevichería La Curva. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       DRAWER LATERAL DEL CARRITO DE COMPRAS
+       ========================================================================== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Carrito de compras">
+    <div class="cart-drawer-header">
+      <h3>
+        <i class="fa-solid fa-basket-shopping"></i>
+        Tu Pedido <span id="drawerCartCount" style="font-size: 1rem; opacity: 0.9;">(0)</span>
+      </h3>
+      <button class="btn-close-drawer" onclick="closeCartDrawer()" aria-label="Cerrar carrito">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Contenido Dinámico del Carrito (Lista de platillos + Formulario de Pedido) -->
+    <div class="cart-drawer-body" id="cartDrawerBody">
+      <!-- Inyectado por app.js -->
+    </div>
+
+    <!-- Resumen de Costos y Botón WhatsApp -->
+    <div class="cart-drawer-footer" id="cartDrawerFooter">
+      <!-- Inyectado por app.js -->
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       MODAL DE VISTA RÁPIDA (QUICK VIEW DISH)
+       ========================================================================== -->
+  <div class="quickview-modal" id="quickViewModal">
+    <div class="quickview-dialog">
+      <button class="btn-close-quickview" onclick="closeQuickView()" aria-label="Cerrar detalle">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-media-col">
+        <img id="modalDishImg" src="" alt="Detalle del Platillo" class="modal-dish-img">
+      </div>
+
+      <div class="modal-info-col">
+        <span class="modal-category-tag" id="modalDishCat">CATEGORÍA</span>
+        <h3 class="modal-dish-name" id="modalDishTitle">Nombre del Plato</h3>
+        <div class="modal-dish-price" id="modalDishPrice">S/ 0.00</div>
+        
+        <p class="modal-dish-desc" id="modalDishDesc">Descripción detallada del platillo...</p>
+
+        <div class="modal-spec-list">
+          <div class="modal-spec-item">
+            <i class="fa-solid fa-utensils" style="color: var(--color-primary-blue);"></i>
+            <span><strong>Porción:</strong> <span id="modalDishPortion">Personal</span></span>
+          </div>
+          <div class="modal-spec-item">
+            <i class="fa-solid fa-pepper-hot" style="color: var(--color-crab-coral);"></i>
+            <span><strong>Picante:</strong> <span id="modalDishSpicy">Suave</span></span>
+          </div>
+          <div class="modal-spec-item">
+            <i class="fa-solid fa-carrot" style="color: var(--color-sunset-orange);"></i>
+            <span><strong>Ingredientes:</strong> <span id="modalDishIngredients">Pescado fresco, limón, ají limo...</span></span>
+          </div>
+        </div>
+
+        <div class="modal-add-action">
+          <button class="btn-primary-order" onclick="addQuickViewToCart()" style="width: 100%; justify-content: center; font-size: 1rem; padding: 12px 20px;">
+            <i class="fa-solid fa-plus"></i> Agregar al Carrito
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       BOTONES FLOTANTES (STICKY WHATSAPP & CARRITO)
+       ========================================================================== -->
+  <div class="floating-actions-container">
+    <!-- Botón Flotante Carrito -->
+    <button class="floating-cart-btn" onclick="openCartDrawer()" title="Ver Carrito de Compras" aria-label="Abrir Carrito">
+      <i class="fa-solid fa-basket-shopping"></i>
+      <span class="floating-cart-badge" id="floatingCartBadge">0</span>
+    </button>
+
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://wa.me/51987654321?text=Hola%20Cevicheria%20Las%20Delicias%20La%20Curva,%20quisiera%20hacer%20un%20pedido" target="_blank" rel="noopener" class="floating-wa-btn" title="Contactar por WhatsApp" aria-label="Chatear por WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- Contenedor para Notificaciones Toast Flotantes -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Script Principal de la Aplicación -->
+  <script src="app.js"></script>
+</body>
+</html>
