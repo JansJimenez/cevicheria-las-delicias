@@ -5,308 +5,348 @@
 
 // Teléfono oficial para pedidos por WhatsApp (Perú +51)
 // Puedes cambiar este número por el número real del negocio
-const WHATSAPP_PHONE = "51987654321";
+const WHATSAPP_PHONE = "51914575242";
 
 // ==========================================================================
 // BASE DE DATOS DE PLATILLOS (CON IMÁGENES REFERENCIALES DE ALTA CALIDAD)
 // ==========================================================================
 const MENU_DATA = [
-  // --- CEVICHES & TIRADITOS ---
+  // --- CEVICHES & ENTRADAS MARINAS ---
   {
-    id: "ceviche-clasico",
-    name: "Ceviche Clásico Las Delicias",
+    id: "ceviche-simple-10",
+    name: "Ceviche Simple (Personal)",
     category: "ceviches",
-    price: 32.00,
+    price: 10.00,
+    tag: "Económico",
+    tagType: "tag-chef",
+    spicyLevel: 2,
+    portion: "Porción Personal",
+    image: "assets/images/ceviche-simple.png",
+    description: "Cubos de pescado blanco fresco curados al momento con zumo de limón sutil del norte, ají limo, cebolla roja crujiente, camote y canchita chulpi crocante.",
+    ingredients: "Pescado del día, limón norteño, ají limo, cebolla roja, camote y canchita."
+  },
+  {
+    id: "ceviche-simple-15",
+    name: "Ceviche Simple (Especial)",
+    category: "ceviches",
+    price: 15.00,
     tag: "El Más Pedido",
     tagType: "tag-chef",
     spicyLevel: 2,
-    portion: "Personal generoso",
-    image: "https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?w=800&auto=format&fit=crop&q=80",
-    description: "Cubos de pescado blanco fresco del día curados al momento con zumo de limón norteño, ají limo picadito y cebolla roja crujiente. Acompañado de camote glaseado, choclo desgranado y canchita chulpi crocante.",
-    ingredients: "Pescado del día, limón de Chulucanas, ají limo, cebolla roja, camote glaseado, choclo y canchita."
+    portion: "Porción Especial Taipá",
+    image: "assets/images/ceviche-simple.png",
+    description: "Porción generosa y bien servida de pescado fresco curado al instante con limón de Chulucanas, ají limo, camote glaseado, choclo desgranado y canchita.",
+    ingredients: "Pescado fresco del día, limón de Chulucanas, ají limo, cebolla roja, camote glaseado, choclo y canchita."
   },
   {
     id: "ceviche-mixto",
-    name: "Ceviche Mixto Especial",
+    name: "Ceviche Mixto",
     category: "ceviches",
-    price: 38.00,
+    price: 20.00,
     tag: "Especialidad",
     tagType: "tag-chef",
     spicyLevel: 2,
     portion: "1 a 2 personas",
-    image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800&auto=format&fit=crop&q=80",
-    description: "Fresquísimo pescado blanco combinado con mixtura marina: pulpo tierno, langostinos y calamar sellado, bañados en nuestra leche de tigre secreta con toque de culantro y rocoto.",
-    ingredients: "Pescado fresco, pulpo, langostinos, calamares, limón, ají limo, camote y choclo tierno."
+    image: "assets/images/ceviche-mixto.png",
+    description: "Fresquísimo pescado blanco combinado con mixtura marina de mariscos seleccionados, bañados en nuestra leche de tigre con toque de culantro, ají limo, camote y choclo.",
+    ingredients: "Pescado fresco, mixtura marina seleccionada, limón norteño, ají limo, camote glaseado y choclo tierno."
   },
   {
-    id: "ceviche-carretillero",
-    name: "Ceviche Carretillero Bravazo",
+    id: "fuente-ceviche",
+    name: "Fuentes de Ceviche",
     category: "ceviches",
-    price: 39.00,
-    tag: "Favorito de la Casa",
-    tagType: "tag-spicy",
-    spicyLevel: 3,
-    portion: "Bien despachado",
-    image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&auto=format&fit=crop&q=80",
-    description: "El clásico ceviche norteño de pescado con su toque picantito coronado con una montaña de crocante chicharrón de calamar dorado al instante y salsa tártara de la casa.",
-    ingredients: "Pescado del día, chicharrón de calamar crispy, leche de tigre al ají limo, camote y canchita."
-  },
-  {
-    id: "tiradito-aji-amarillo",
-    name: "Tiradito en Crema de Ají Amarillo",
-    category: "ceviches",
-    price: 36.00,
-    tag: "Gourmet",
-    tagType: "tag-chef",
-    spicyLevel: 1,
-    portion: "1 a 2 personas",
-    image: "https://images.unsplash.com/photo-1539136788836-5699e78bfc75?w=800&auto=format&fit=crop&q=80",
-    description: "Finas láminas de pescado blanco bañadas en una suave y aterciopelada emulsión de ají amarillo ahumado, zumo de limón y aceite de oliva. Coronado con choclo desgranado.",
-    ingredients: "Láminas de pescado fresco, crema de ají amarillo, limón norteño, choclo y camote."
+    price: 30.00,
+    priceNote: "a más",
+    tag: "Para Compartir",
+    tagType: "tag-combo",
+    spicyLevel: 2,
+    portion: "Familiar (Desde S/ 30 a más)",
+    image: "assets/images/ceviche-mixto.png",
+    description: "Abundante y deliciosa fuente marina para disfrutar en familia o amigos. Precio a partir de S/ 30 a más según el tamaño y la variedad marina que desees.",
+    ingredients: "Pescado del día, limón norteño, ají limo, abundante camote, choclo desgranado y canchita chulpi."
   },
   {
     id: "leche-de-tigre",
-    name: "Copa Leche de Tigre La Curva",
+    name: "Leche de Tigre",
     category: "ceviches",
-    price: 24.00,
+    price: 10.00,
     tag: "Afrodisíaco",
     tagType: "tag-spicy",
     spicyLevel: 3,
-    portion: "Copa gigante 16oz",
-    image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&auto=format&fit=crop&q=80",
-    description: "Poderoso concentrado marino con trozos de pescado fresco, mariscos salteados, jugo de limón, ají limo, choclo, canchita serrana y topping de calamar crocante.",
-    ingredients: "Concentrado de ceviche, mixtura marina, ají limo, canchita, choclo y calamar frito."
+    portion: "Copa Personal",
+    image: "assets/images/leche-de-tigre.png",
+    description: "Poderoso concentrado marino con trozos de pescado fresco, jugo de limón sutil, ají limo, canchita serrana y choclo desgranado.",
+    ingredients: "Concentrado de ceviche, trozos de pescado fresco, ají limo, canchita crocante y choclo."
+  },
+  {
+    id: "choros-chalaca",
+    name: "Choros a la Chalaca",
+    category: "ceviches",
+    price: 20.00,
+    tag: "Clásico Porteño",
+    tagType: "tag-chef",
+    spicyLevel: 1,
+    portion: "Porción de 8 a 10 unid.",
+    image: "assets/images/choros-chalaca.png",
+    description: "Choros frescos en su valva cubiertos con nuestra tradicional salsa chalaca criolla: cebolla picada, tomate concassé, choclo tierno, ají limo y bastante zumo de limón.",
+    ingredients: "Choros seleccionados, salsa chalaca al limón, choclo desgranado y ají limo."
   },
 
-  // --- CHICHARRONES & JALEAS ---
-  {
-    id: "jalea-mixta",
-    name: "Jalea Mixta Marina Familiar",
-    category: "chicharrones",
-    price: 52.00,
-    tag: "Para Compartir",
-    tagType: "tag-combo",
-    spicyLevel: 0,
-    portion: "Familiar (2-3 personas)",
-    image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80",
-    description: "Festín crujiente con trozos de pescado, aros de calamar, langostinos enteros y pulpo rebozados en masa crocante dorada. Servido sobre yucas fritas y coronado con abundante salsa criolla y tártara casera.",
-    ingredients: "Pescado, langostinos, calamares, yucas doradas, salsa criolla al limón y tártara."
-  },
+  // --- CHICHARRONES ---
   {
     id: "chicharron-pescado",
-    name: "Chicharrón de Pescado Crocante",
+    name: "Chicharrón de Pescado",
     category: "chicharrones",
-    price: 34.00,
+    price: 20.00,
     tag: "Muy Crocante",
     tagType: "tag-chef",
     spicyLevel: 0,
-    portion: "1 a 2 personas",
-    image: "https://images.unsplash.com/photo-1562967914-608f82629710?w=800&auto=format&fit=crop&q=80",
-    description: "Trozos de pescado marinados con mostaza, ajo y hierbas aromáticas, rebozados y fritos a temperatura perfecta. Acompañado de bastones de yuca frita y salsa tártara.",
-    ingredients: "Filete de pescado en cubos, rebozado crujiente, yucas fritas y salsas de la casa."
+    portion: "Porción Generosa",
+    image: "assets/images/chicharron-pescado.png",
+    description: "Trozos de pescado sazonados y rebozados en crujiente punto dorado. Servidos con bastones de yuca frita, salsa tártara casera y salsa criolla.",
+    ingredients: "Filete de pescado fresco, rebozado crujiente, yucas doradas, salsa tártara y criolla."
   },
   {
-    id: "chicharron-calamar",
-    name: "Chicharrón de Calamar Crispy",
+    id: "chicharron-mixto",
+    name: "Chicharrón Mixto",
     category: "chicharrones",
-    price: 36.00,
-    tag: "Clásico del Bar",
+    price: 30.00,
+    tag: "Súper Taipá",
     tagType: "tag-chef",
     spicyLevel: 0,
-    portion: "Para picar o plato",
-    image: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?w=800&auto=format&fit=crop&q=80",
-    description: "Aros tiernos de calamar empanizados en harina sazonada y fritos hasta quedar ultra dorados y crocantes. Servidos con salsa tártara fresca y limón.",
-    ingredients: "Aros de calamar seleccionados, masa especial de la casa, tártara y limón."
+    portion: "1 a 2 personas",
+    image: "assets/images/chicharron-mixto.png",
+    description: "Crocante festín marino con trozos de pescado y mixtura de mariscos fritos con receta de la casa. Servido con yucas doradas y salsa tártara casera.",
+    ingredients: "Pescado del día, mariscos variados crocantes, yucas doradas, tártara y salsa criolla."
   },
 
-  // --- ARROCES & PLATOS CALIENTES ---
+  // --- ARROCES & SOPAS ---
   {
-    id: "arroz-mariscos",
-    name: "Arroz con Mariscos Tradicional",
+    id: "arroz-marisco",
+    name: "Arroz con Mariscos",
     category: "arroces",
-    price: 38.00,
-    tag: "Estrella de la Carta",
+    price: 20.00,
+    tag: "Favorito Marino",
     tagType: "tag-chef",
     spicyLevel: 1,
     portion: "Plato hondo generoso",
-    image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=800&auto=format&fit=crop&q=80",
-    description: "Arroz al dente con sofrito de ají panca, ají amarillo y vino blanco, salteado con langostinos, conchas de abanico, calamares y pulpo. Terminado con queso parmesano derretido y salsa criolla.",
-    ingredients: "Arroz criollo, langostinos, pulpo, calamar, conchas, pimiento, arvejitas y parmesano."
+    image: "assets/images/arroz-mariscos.jpg",
+    description: "Arroz al dente con sofrito criollo de ají amarillo, vino blanco y especias costeñas, salteado con abundante mixtura de mariscos y terminado con salsa criolla.",
+    ingredients: "Arroz criollo, mixtura de mariscos, ají amarillo, pimientos, arvejas y salsa criolla."
   },
   {
-    id: "arroz-chaufa-mariscos",
-    name: "Chaufa Marino al Wok",
+    id: "parihuela-cabrilla-tramboyo",
+    name: "Parihuela de Cabrilla o Tramboyo",
     category: "arroces",
-    price: 37.00,
-    tag: "Fusión Criollo-Chifa",
-    tagType: "tag-chef",
-    spicyLevel: 0,
-    portion: "1 a 2 personas",
-    image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800&auto=format&fit=crop&q=80",
-    description: "Arroz salteado en wok a fuego volcánico con mariscos surtidos, tortilla de huevo en cubos, cebollita china, toques de kion, sillao especial y aceite de ajonjolí.",
-    ingredients: "Arroz salteado al wok, mixtura de mariscos, sillao, cebolla china, kion y ajonjolí."
-  },
-  {
-    id: "parihuela-especial",
-    name: "Parihuela Levanta Muertos",
-    category: "arroces",
-    price: 44.00,
-    tag: "Poderosa y Nutritiva",
+    price: 30.00,
+    tag: "Levanta Muertos",
     tagType: "tag-spicy",
     spicyLevel: 2,
-    portion: "Tazón familiar",
-    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&auto=format&fit=crop&q=80",
-    description: "Sustanciosa sopa marina tradicional hervida a fuego lento con filete de pescado, cangrejo entero, langostinos, choros, chicha de jora, culantro y ajíes norteños.",
-    ingredients: "Cangrejo entero, filete de pescado, langostinos, choros, conchas, chicha de jora y culantro."
+    portion: "Tazón Marino Contundente",
+    image: "assets/images/parihuela.jpg",
+    description: "Sustanciosa y reconfortante sopa marina tradicional con pesca del día a elección (cabrilla o tramboyo fresco entero), mariscos variados, chicha de jora y culantro.",
+    ingredients: "Pescado cabrilla o tramboyo fresco, mariscos, caldo de cangrejo, chicha de jora y ajíes."
   },
   {
-    id: "tacu-tacu-mariscos",
-    name: "Tacu Tacu en Salsa de Mariscos",
+    id: "sudado-pescado",
+    name: "Sudados",
     category: "arroces",
-    price: 42.00,
-    tag: "Recomendado",
+    price: 25.00,
+    tag: "Tradición Marina",
     tagType: "tag-chef",
     spicyLevel: 1,
-    portion: "Plato fuerte bien servido",
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=80",
-    description: "Sábana dorada y crujiente de frijoles canarios batidos con arroz criollo, bañada con una cremosa y abundante salsa de mariscos flambeados al pisco y ají amarillo.",
-    ingredients: "Frijoles canarios, arroz dorado, mixtura de mariscos en salsa madre y pisco."
+    portion: "Plato caliente con caldo",
+    image: "assets/images/sudado.jpg",
+    description: "Pescado fresco sudado en su propio jugo con chicha de jora, gajos de cebolla roja, tomate, ají amarillo y culantro picado. Servido con porción de arroz y yucas.",
+    ingredients: "Pescado fresco del día, tomate, cebolla roja, ají amarillo, chicha de jora, yucas y arroz."
   },
 
-  // --- CAUSAS & ENTRADAS ---
-  {
-    id: "causa-cangrejo",
-    name: "Causa con Pulpa de Cangrejo",
-    category: "causas",
-    price: 28.00,
-    tag: "100% Fresca",
-    tagType: "tag-chef",
-    spicyLevel: 1,
-    portion: "Entrada para compartir",
-    image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&auto=format&fit=crop&q=80",
-    description: "Fina y sedosa masa de papa amarilla prensada con pasta de ají amarillo y limón, rellena de pura pulpa de cangrejo seleccionada, palta fuerte y mayonesa casera.",
-    ingredients: "Papa amarilla, ají amarillo, limón, pulpa de cangrejo, palta y huevo duro."
-  },
-  {
-    id: "tequenos-marinos",
-    name: "Tequeños Marinos con Guacamole",
-    category: "causas",
-    price: 24.00,
-    tag: "Ideal para Picar",
-    tagType: "tag-combo",
-    spicyLevel: 0,
-    portion: "Porción de 10 unidades",
-    image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=800&auto=format&fit=crop&q=80",
-    description: "Diez rollitos crocantes de masa wantán rellenos de queso fundido y trocitos de mariscos sazonados. Acompañados de un cremoso guacamole criollo con limón.",
-    ingredients: "Masa wantán crocante, queso paria, mariscos y guacamole fresco al limón."
-  },
-  {
-    id: "pulpo-olivo",
-    name: "Pulpo al Olivo La Curva",
-    category: "causas",
-    price: 36.00,
-    tag: "Exquisito",
-    tagType: "tag-chef",
-    spicyLevel: 0,
-    portion: "Entrada fría",
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=80",
-    description: "Finas láminas de pulpo tierno cocido a la perfección sobre rodajas de palta y galletitas saladas, bañadas en nuestra salsa suave de aceitunas botija moradas y aceite de oliva.",
-    ingredients: "Pulpo tierno, crema de aceitunas negras botija, palta y galletas de soda."
-  },
-
-  // --- DÚOS & TRÍOS MARINOS ---
+  // --- COMBOS MARINOS ---
   {
     id: "duo-marino",
-    name: "Dúo Marino Clásico",
+    name: "Dúos Marinos",
     category: "combos",
-    price: 42.00,
+    price: 35.00,
     tag: "El Más Vendido",
     tagType: "tag-combo",
     spicyLevel: 2,
     portion: "1 a 2 personas",
-    image: "https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?w=800&auto=format&fit=crop&q=80",
-    description: "La combinación marina peruana por excelencia: una porción generosa de Ceviche Mixto acompañada de crujiente Chicharrón de Pescado con sus yucas y salsa tártara.",
-    ingredients: "Ceviche Mixto + Chicharrón de Pescado con yucas, camote y choclo."
+    image: "assets/images/duo-marino.png",
+    description: "La combinación marina perfecta: generosa porción de Ceviche fresco acompañada de crujiente Chicharrón de Pescado con sus yucas y salsa tártara.",
+    ingredients: "Ceviche fresco + Chicharrón de pescado con yucas, camote y canchita."
   },
   {
-    id: "trio-las-delicias",
-    name: "Trío Marino Las Delicias",
+    id: "trio-marino",
+    name: "Tríos Marinos",
     category: "combos",
-    price: 52.00,
+    price: 45.00,
     tag: "Plato Bandera",
     tagType: "tag-combo",
     spicyLevel: 2,
     portion: "Para 2 personas",
-    image: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=800&auto=format&fit=crop&q=80",
-    description: "El tridente perfecto de sabor costeño: Ceviche Clásico de Pescado + sabroso Arroz con Mariscos humeante + Chicharrón de Calamar crujiente con tártara casera.",
+    image: "assets/images/trio-marino.png",
+    description: "El tridente insuperable: Ceviche fresco de pescado + sabroso Arroz con Mariscos humeante + Chicharrón crocante con tártara casera.",
     ingredients: "Ceviche de pescado fresco + Arroz con mariscos + Chicharrón crocante."
   },
+
+  // --- PLATOS A LA CARTA ---
   {
-    id: "ronda-marina",
-    name: "Ronda Marina 4 Sabores La Curva",
-    category: "combos",
-    price: 85.00,
-    tag: "Familiar Premium",
-    tagType: "tag-combo",
-    spicyLevel: 2,
-    portion: "Para 3 a 4 personas",
-    image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&auto=format&fit=crop&q=80",
-    description: "Bandeja imperial con los 4 pilares de nuestra cocina: Ceviche Mixto Especial, Arroz con Mariscos al Parmesano, Jalea Mixta Marina y Causa de Pulpa de Cangrejo.",
-    ingredients: "Ceviche Mixto, Arroz con Mariscos, Jalea Marina y Causa rellena."
+    id: "trucha-frita",
+    name: "Trucha Frita Entera",
+    category: "carta",
+    price: 18.00,
+    tag: "A la Carta",
+    tagType: "tag-carta",
+    spicyLevel: 0,
+    portion: "Trucha entera",
+    image: "assets/images/trucha-frita.jpg",
+    description: "Fresca trucha entera sazonada con ajo y especias criollas, frita a la perfección con piel dorada y crujiente. Servida con arroz blanco, papas doradas o yucas y ensalada criolla fresca.",
+    ingredients: "Trucha entera fresca, arroz blanco, papas doradas o yucas y ensalada criolla fresca."
+  },
+  {
+    id: "chuleta-chancho",
+    name: "Chuleta de Chancho",
+    category: "carta",
+    price: 15.00,
+    tag: "A la Carta",
+    tagType: "tag-carta",
+    spicyLevel: 0,
+    portion: "Plato individual contundente",
+    image: "assets/images/chuleta-chancho.png",
+    description: "Jugosa chuleta de cerdo sazonada al estilo de la casa, dorada a la plancha hasta alcanzar el punto perfecto de sabor. Acompañada de arroz blanco y papas doradas o ensalada.",
+    ingredients: "Chuleta de cerdo seleccionada, arroz blanco, papas doradas y guarnición de la casa."
   },
 
-  // --- BAR & BEBIDAS ---
+  // --- BEBIDAS ---
   {
-    id: "chicha-morada-jarra",
-    name: "Jarra de Chicha Morada (1 Litro)",
+    id: "jarra-pina",
+    name: "Jarra de Piña (1 Litro)",
     category: "bebidas",
-    price: 16.00,
+    price: 15.00,
     tag: "100% Natural",
-    tagType: "tag-chef",
+    tagType: "tag-drink",
     spicyLevel: 0,
     portion: "Jarra de 1 Litro",
-    image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=800&auto=format&fit=crop&q=80",
-    description: "Elaborada artesanalmente con maíz morado hervido con piña golden, manzana, membrillo, canela, clavo de olor y el toque justo de zumo de limón fresco.",
-    ingredients: "Maíz morado, piña, manzana, canela, clavo de olor, limón y azúcar al gusto."
+    image: "assets/images/jarra-pina.png",
+    description: "Refresco natural elaborado con selecta piña golden madura, dulce y aromática, servido bien helado.",
+    ingredients: "Pura piña golden, agua purificada y hielo."
   },
   {
-    id: "pisco-sour",
-    name: "Pisco Sour Catedral",
+    id: "jarra-limonada-frozen",
+    name: "Jarra de Limonada Frozen (1 Litro)",
     category: "bebidas",
-    price: 26.00,
-    tag: "Clásico Peruano",
-    tagType: "tag-chef",
+    price: 10.00,
+    tag: "Frozen Frappé",
+    tagType: "tag-drink",
     spicyLevel: 0,
-    portion: "Copa Catedral",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&auto=format&fit=crop&q=80",
-    description: "Nuestro coctel nacional preparado con Pisco Quebranta de alta gama, zumo de limón sutil recién exprimido, jarabe de goma, clara de huevo espumosa y gotas de amargo de angostura.",
-    ingredients: "Pisco Quebranta, limón, jarabe, clara de huevo y gotas de angostura."
+    portion: "Jarra de 1 Litro",
+    image: "assets/images/jarra-limonada-frozen.png",
+    description: "Limonada frappé ultra refrescante preparada al instante con limones sutiles recién exprimidos y abundante hielo frappé.",
+    ingredients: "Limón sutil norteño, hielo frappé y jarabe."
   },
   {
-    id: "chilcano-maracuya",
-    name: "Chilcano de Maracuyá / Clásico",
-    category: "bebidas",
-    price: 22.00,
-    tag: "Refrescante",
-    tagType: "tag-chef",
-    spicyLevel: 0,
-    portion: "Vaso largo 14oz",
-    image: "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=800&auto=format&fit=crop&q=80",
-    description: "Refrescante mezcla de pisco aromático, zumo natural de maracuyá de la costa, ginger ale bien fría, cubos de hielo y rodaja de limón.",
-    ingredients: "Pisco peruano, maracuyá concentrado, ginger ale y hielo cristalino."
-  },
-  {
-    id: "cerveza-helada",
-    name: "Cerveza Cusqueña / Pilsen Heladita",
+    id: "jarra-maracuya",
+    name: "Jarra de Maracuyá (1 Litro)",
     category: "bebidas",
     price: 12.00,
-    tag: "Al Polo",
-    tagType: "tag-combo",
+    tag: "Fruta Natural",
+    tagType: "tag-drink",
     spicyLevel: 0,
-    portion: "Botella 330ml / 630ml",
-    image: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=800&auto=format&fit=crop&q=80",
-    description: "Cerveza peruana servida al polo, perfecta para acompañar y contrastar la frescura de nuestros ceviches y jaleas crujientes.",
-    ingredients: "Cerveza rubia o trigo seleccionada bien fría."
+    portion: "Jarra de 1 Litro",
+    image: "assets/images/jarra-maracuya.png",
+    description: "Jugo natural de pura fruta de maracuyá de la costa con su toque cítrico inconfundible, ideal para acompañar platos marinos.",
+    ingredients: "Concentrado de maracuyá natural, agua filtrada y hielo."
+  },
+  {
+    id: "jarra-chicha-morada",
+    name: "Jarra de Chicha Morada (1 Litro)",
+    category: "bebidas",
+    price: 12.00,
+    tag: "Receta Casera",
+    tagType: "tag-drink",
+    spicyLevel: 0,
+    portion: "Jarra de 1 Litro",
+    image: "assets/images/jarra-chicha-morada.png",
+    description: "Auténtica chicha morada tradicional hervida artesanalmente con maíz morado, piña, manzana, canela, clavo de olor y limón sutil fresco.",
+    ingredients: "Maíz morado, piña, manzana, canela, clavo de olor y zumo de limón."
+  },
+  {
+    id: "gaseosa-inca-kola-2l",
+    name: "Gaseosa Inca Kola (2 Litros)",
+    category: "bebidas",
+    price: 9.00,
+    tag: "Familiar",
+    tagType: "tag-drink",
+    spicyLevel: 0,
+    portion: "Botella 2 Litros",
+    image: "assets/images/gaseosa-inca-kola-2l.png",
+    description: "La bebida de sabor nacional en tamaño familiar de 2 Litros, entregada bien heladita al polo para compartir en la mesa.",
+    ingredients: "Botella Inca Kola 2 Litros bien helada."
+  },
+  {
+    id: "gaseosa-coca-cola-2l",
+    name: "Gaseosa Coca Cola (2 Litros)",
+    category: "bebidas",
+    price: 9.00,
+    tag: "Familiar",
+    tagType: "tag-drink",
+    spicyLevel: 0,
+    portion: "Botella 2 Litros",
+    image: "assets/images/gaseosa-coca-cola-2l.png",
+    description: "Coca Cola clásica de 2 Litros para compartir en familia o con amigos junto a tus platillos preferidos.",
+    ingredients: "Botella Coca Cola 2 Litros bien helada."
+  },
+  {
+    id: "gaseosa-inca-kola-1l",
+    name: "Gaseosa Inca Kola (1 Litro)",
+    category: "bebidas",
+    price: 7.00,
+    tag: "Mediana",
+    tagType: "tag-drink",
+    spicyLevel: 0,
+    portion: "Botella 1 Litro",
+    image: "assets/images/gaseosa-inca-kola-1l.png",
+    description: "Botella de Inca Kola de 1 Litro servida bien fría.",
+    ingredients: "Botella Inca Kola 1 Litro helada."
+  },
+  {
+    id: "gaseosa-coca-cola-1l",
+    name: "Gaseosa Coca Cola (1 Litro)",
+    category: "bebidas",
+    price: 7.00,
+    tag: "Mediana",
+    tagType: "tag-drink",
+    spicyLevel: 0,
+    portion: "Botella 1 Litro",
+    image: "assets/images/gaseosa-coca-cola-1l.png",
+    description: "Botella de Coca Cola de 1 Litro servida bien helada.",
+    ingredients: "Botella Coca Cola 1 Litro helada."
+  },
+  {
+    id: "gaseosa-inca-kola-500ml",
+    name: "Gaseosa Inca Kola (500 ml)",
+    category: "bebidas",
+    price: 4.00,
+    tag: "Personal",
+    tagType: "tag-drink",
+    spicyLevel: 0,
+    portion: "Botella Personal 500 ml",
+    image: "assets/images/gaseosa-inca-kola-500ml.png",
+    description: "Inca Kola personal de 500 ml bien fría, el acompañamiento perfecto para tu almuerzo individual.",
+    ingredients: "Botella Inca Kola 500 ml personal helada."
+  },
+  {
+    id: "gaseosa-coca-cola-500ml",
+    name: "Gaseosa Coca Cola (500 ml)",
+    category: "bebidas",
+    price: 4.00,
+    tag: "Personal",
+    tagType: "tag-drink",
+    spicyLevel: 0,
+    portion: "Botella Personal 500 ml",
+    image: "assets/images/gaseosa-coca-cola-500ml.png",
+    description: "Coca Cola personal de 500 ml al polo para disfrutar al instante.",
+    ingredients: "Botella Coca Cola 500 ml personal helada."
   }
 ];
 
@@ -365,7 +405,7 @@ function renderMenu() {
     return `
       <article class="dish-card" data-dish-id="${dish.id}">
         <div class="dish-media-wrapper">
-          <img src="${dish.image}" alt="${escapeHtml(dish.name)}" class="dish-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?w=800&auto=format&fit=crop&q=80'">
+          <img src="${dish.image}" alt="${escapeHtml(dish.name)}" class="dish-image" loading="lazy" onerror="this.src='assets/images/ceviche-simple.png'">
           ${dish.tag ? `<span class="dish-badge-tag ${dish.tagType}">${dish.tag}</span>` : ''}
           <button class="dish-quick-view-btn" onclick="openQuickView('${dish.id}')" title="Ver detalles del plato" aria-label="Ver detalles de ${escapeHtml(dish.name)}">
             <i class="fa-solid fa-eye"></i>
@@ -385,6 +425,7 @@ function renderMenu() {
             <div class="dish-price">
               <span class="currency">S/</span>
               <span>${dish.price.toFixed(2)}</span>
+              ${dish.priceNote ? `<small class="price-note">${dish.priceNote}</small>` : ''}
             </div>
             <button class="btn-add-cart" onclick="addToCart('${dish.id}')">
               <i class="fa-solid fa-plus"></i> Agregar
@@ -577,7 +618,7 @@ function updateCartUI() {
 
       <div class="form-group-cart">
         <label for="orderCustomerPhone">Teléfono / WhatsApp *</label>
-        <input type="tel" id="orderCustomerPhone" placeholder="Ej. 987654321" required>
+        <input type="tel" id="orderCustomerPhone" placeholder="Ej. 914575242" required>
       </div>
 
       <div id="deliveryAddressGroup" class="form-group-cart" style="${deliveryType === 'delivery' ? 'display:block;' : 'display:none;'}">
@@ -592,16 +633,70 @@ function updateCartUI() {
 
       <div class="form-group-cart">
         <label for="orderPaymentMethod">Método de Pago Preferido</label>
-        <select id="orderPaymentMethod" onchange="toggleCashInput(this.value)">
-          <option value="Yape / Plin">Yape o Plin (Transferencia al instante)</option>
-          <option value="Efectivo">Efectivo contra entrega</option>
-          <option value="Tarjeta">Tarjeta (POS inalámbrico)</option>
+        <select id="orderPaymentMethod" onchange="togglePaymentMethodDetails(this.value)">
+          <option value="Yape / Plin (Billetera Digital con QR)" selected>📱 Yape / Plin (Billetera Digital con QR)</option>
+          <option value="Efectivo contra entrega">💵 Efectivo contra entrega</option>
+          <option value="Tarjeta de Crédito / Débito (POS Móvil)">💳 Tarjeta de Crédito / Débito (POS inalámbrico)</option>
         </select>
       </div>
 
+      <!-- Caja Interactiva para Yape / Plin con Código QR -->
+      <div id="qrPaymentBox" class="qr-payment-cart-box">
+        <div class="qr-payment-header">
+          <div class="wallet-badges">
+            <span class="wallet-badge yape-badge"><i class="fa-solid fa-mobile-screen"></i> Yape</span>
+            <span class="wallet-badge plin-badge"><i class="fa-solid fa-bolt"></i> Plin</span>
+          </div>
+          <span class="wallet-interop-tag">Interoperable</span>
+        </div>
+        
+        <div class="qr-code-display-wrap" onclick="openQrModal()" title="Clic para ampliar código QR">
+          <img src="assets/qr-yape-plin.png" alt="Código QR Yape y Plin Cevichería Las Delicias" class="qr-code-img">
+          <span class="qr-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Clic para ver en grande</span>
+        </div>
+
+        <div class="qr-account-details">
+          <div class="qr-data-row">
+            <span class="qr-label">Número Yape / Plin:</span>
+            <div class="qr-number-action">
+              <strong class="qr-phone-number">914 575 242</strong>
+              <button type="button" class="btn-copy-clip" onclick="copyPaymentNumber('914575242', this)" title="Copiar número">
+                <i class="fa-regular fa-copy"></i> Copiar
+              </button>
+            </div>
+          </div>
+          <div class="qr-data-row">
+            <span class="qr-label">Titular:</span>
+            <span class="qr-value-name">Cevichería Las Delicias</span>
+          </div>
+        </div>
+
+        <p class="qr-instruction-tip">
+          <i class="fa-solid fa-circle-check" style="color: #25d366;"></i> Escanea el QR o transfiere al número. Envía la captura del comprobante por WhatsApp al confirmar tu pedido.
+        </p>
+      </div>
+
+      <!-- Caja para Efectivo -->
       <div id="cashInputGroup" class="form-group-cart" style="display: none;">
         <label for="orderCashAmount">¿Con cuánto vas a pagar? (Para llevarte vuelto exacto)</label>
-        <input type="text" id="orderCashAmount" placeholder="Ej. Billete de S/ 100">
+        <input type="text" id="orderCashAmount" placeholder="Ej. Billete de S/ 50 o S/ 100">
+      </div>
+
+      <!-- Caja para Tarjeta POS -->
+      <div id="cardNoticeGroup" class="card-notice-box" style="display: none;">
+        <div class="card-notice-header">
+          <i class="fa-solid fa-credit-card" style="color: var(--color-primary-blue);"></i>
+          <span>Cobro con Tarjeta en tu Domicilio o Mesa</span>
+        </div>
+        <p class="card-notice-text">
+          Llevamos terminal <strong>POS inalámbrico</strong> sin recargo adicional. Aceptamos tarjetas de crédito y débito Visa, Mastercard, American Express y Diners Club.
+        </p>
+        <div class="card-icons-row">
+          <i class="fa-brands fa-cc-visa" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-amex" title="American Express"></i>
+          <i class="fa-brands fa-cc-diners-club" title="Diners Club"></i>
+        </div>
       </div>
 
       <div class="form-group-cart">
@@ -641,12 +736,85 @@ function updateCartUI() {
   `;
 }
 
-function toggleCashInput(value) {
-  const group = document.getElementById("cashInputGroup");
-  if (group) {
-    group.style.display = value === "Efectivo" ? "block" : "none";
+function togglePaymentMethodDetails(value) {
+  const qrBox = document.getElementById("qrPaymentBox");
+  const cashBox = document.getElementById("cashInputGroup");
+  const cardBox = document.getElementById("cardNoticeGroup");
+
+  if (qrBox) {
+    qrBox.style.display = value.includes("Yape") ? "block" : "none";
+  }
+  if (cashBox) {
+    cashBox.style.display = value.includes("Efectivo") ? "block" : "none";
+  }
+  if (cardBox) {
+    cardBox.style.display = value.includes("Tarjeta") ? "block" : "none";
   }
 }
+
+// Compatibilidad
+function toggleCashInput(value) {
+  togglePaymentMethodDetails(value);
+}
+
+// Copiar número al portapapeles con feedback visual
+function copyPaymentNumber(number, btnElement) {
+  const doFeedback = () => {
+    showToast("¡Número " + number + " copiado al portapapeles!");
+    if (btnElement) {
+      const originalHTML = btnElement.innerHTML;
+      btnElement.innerHTML = '<i class="fa-solid fa-check"></i> ¡Copiado!';
+      btnElement.classList.add("copied");
+      setTimeout(() => {
+        btnElement.innerHTML = originalHTML;
+        btnElement.classList.remove("copied");
+      }, 2500);
+    }
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(number).then(doFeedback).catch(() => {
+      fallbackCopy(number);
+      doFeedback();
+    });
+  } else {
+    fallbackCopy(number);
+    doFeedback();
+  }
+}
+
+function fallbackCopy(text) {
+  const tempInput = document.createElement("input");
+  tempInput.value = text;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+}
+
+// Modal QR Yape / Plin
+function openQrModal() {
+  const modal = document.getElementById("qrModalBackdrop");
+  if (modal) {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeQrModal(event) {
+  const modal = document.getElementById("qrModalBackdrop");
+  if (modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+}
+
+// Cerrar con Escape
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeQrModal();
+  }
+});
 
 // ==========================================================================
 // CONSTRUCCIÓN Y ENVÍO DEL PEDIDO A WHATSAPP
@@ -741,8 +909,12 @@ function submitWhatsAppOrder() {
   }
 
   msg += `💳 *Método de Pago:* ${paymentMethod}\n`;
-  if (paymentMethod === "Efectivo" && cashAmount) {
+  if (paymentMethod.includes("Efectivo") && cashAmount) {
     msg += `💵 *Paga con:* ${cashAmount}\n`;
+  } else if (paymentMethod.includes("Yape") || paymentMethod.includes("Plin")) {
+    msg += `📲 *Billetera Digital:* Adjunto captura de constancia Yape/Plin\n`;
+  } else if (paymentMethod.includes("Tarjeta")) {
+    msg += `💳 *POS Móvil:* Llevar terminal inalámbrico para tarjeta\n`;
   }
 
   if (notes) {
@@ -773,9 +945,17 @@ function openQuickView(dishId) {
 
   document.getElementById("modalDishImg").src = dish.image;
   document.getElementById("modalDishImg").alt = dish.name;
-  document.getElementById("modalDishCat").textContent = dish.category.toUpperCase();
+  const catNames = {
+    ceviches: "Ceviches & Entradas",
+    chicharrones: "Chicharrones",
+    arroces: "Arroces & Sopas",
+    combos: "Dúos & Tríos Marinos",
+    carta: "Platos a la Carta",
+    bebidas: "Bebidas"
+  };
+  document.getElementById("modalDishCat").textContent = (catNames[dish.category] || dish.category).toUpperCase();
   document.getElementById("modalDishTitle").textContent = dish.name;
-  document.getElementById("modalDishPrice").textContent = `S/ ${dish.price.toFixed(2)}`;
+  document.getElementById("modalDishPrice").innerHTML = `S/ ${dish.price.toFixed(2)}${dish.priceNote ? ` <small style="font-size:0.85rem;color:#fb8500;font-weight:700;">${dish.priceNote}</small>` : ''}`;
   document.getElementById("modalDishDesc").textContent = dish.description;
   document.getElementById("modalDishPortion").textContent = dish.portion;
   document.getElementById("modalDishIngredients").textContent = dish.ingredients;
@@ -872,22 +1052,396 @@ function escapeHtml(str) {
             .replace(/'/g, "&#039;");
 }
 
+function setCategory(cat) {
+  currentCategory = cat;
+  const categoryButtons = document.querySelectorAll(".category-tab-btn");
+  categoryButtons.forEach(btn => {
+    if (btn.getAttribute("data-category") === cat) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+  renderMenu();
+}
+window.setCategory = setCategory;
+
+// ==========================================================================
+// SISTEMA DE RESEÑAS VERIFICADAS CON DNI (PROTECCIÓN CONTRA OPINIONES FALSAS)
+// ==========================================================================
+let currentReviewRating = 5;
+let adminAuthed = false;
+
+// Manejo del selector de estrellas en el formulario
+function setReviewRating(stars) {
+  currentReviewRating = stars;
+  const ratingButtons = document.querySelectorAll("#ratingStarsRow .rating-star-btn");
+  ratingButtons.forEach((btn, idx) => {
+    if (idx < stars) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+
+  const ratingLabels = {
+    5: "⭐⭐⭐⭐⭐ ¡Excelente! Lo mejor de lo mejor",
+    4: "⭐⭐⭐⭐ Muy Bueno, gran sazón",
+    3: "⭐⭐⭐ Bueno, aceptable",
+    2: "⭐⭐ Regular, por mejorar",
+    1: "⭐ Malo, no me gustó"
+  };
+  const labelEl = document.getElementById("ratingSelectedText");
+  if (labelEl) {
+    labelEl.textContent = ratingLabels[stars] || "";
+  }
+}
+window.setReviewRating = setReviewRating;
+
+// Gestión en localStorage
+function getStoredReviews() {
+  try {
+    const raw = localStorage.getItem("delicias_reviews");
+    if (raw) {
+      return JSON.parse(raw);
+    }
+  } catch (e) {
+    console.error("Error reading reviews:", e);
+  }
+  return [];
+}
+
+function saveStoredReviews(reviews) {
+  try {
+    localStorage.setItem("delicias_reviews", JSON.stringify(reviews));
+  } catch (e) {
+    console.error("Error saving reviews:", e);
+  }
+}
+
+// Renderizado de las reseñas aprobadas en la web
+function renderReviews() {
+  const container = document.getElementById("reviewsGrid");
+  if (!container) return;
+
+  const allReviews = getStoredReviews();
+  const approvedReviews = allReviews.filter(r => r.approved === true);
+
+  if (approvedReviews.length === 0) {
+    container.innerHTML = `
+      <div class="empty-reviews-card">
+        <i class="fa-regular fa-comments main-icon"></i>
+        <h4>Sé el primero en calificar tu visita</h4>
+        <p>
+          En Cevichería Las Delicias valoramos las opiniones sinceras de comensales reales. Protegemos el negocio requiriendo DNI para evitar reseñas falsas o anónimas.
+        </p>
+        <button class="btn-leave-review" onclick="openReviewModal()">
+          <i class="fa-solid fa-pen-to-square"></i> Dejar mi Reseña Verificada
+        </button>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = approvedReviews.map(r => {
+    const initials = r.author ? r.author.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase() : 'C';
+    const maskedDni = r.dni ? r.dni.slice(0, 2) + '****' + r.dni.slice(-2) : 'Verificado';
+    const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+
+    return `
+      <div class="testimonial-card">
+        <div>
+          <div class="testimonial-header-top">
+            <div class="testimonial-rating" title="${r.rating} de 5 estrellas">${stars}</div>
+            <span class="verified-dni-pill" title="Comensal identificado con DNI ${maskedDni}">
+              <i class="fa-solid fa-circle-check"></i> DNI ${maskedDni}
+            </span>
+          </div>
+          ${r.dish ? `
+            <div class="testimonial-dish-tag">
+              <i class="fa-solid fa-utensils"></i> Probó: ${escapeHtml(r.dish)}
+            </div>
+          ` : ''}
+          <p class="testimonial-quote">"${escapeHtml(r.comment)}"</p>
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">${initials}</div>
+          <div class="author-info">
+            <h6>${escapeHtml(r.author)}</h6>
+            <span>${r.date || 'Cliente Verificado'} • Huayobamba</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+window.renderReviews = renderReviews;
+
+// Modal para dejar reseña
+function openReviewModal() {
+  const modal = document.getElementById("reviewModalBackdrop");
+  if (modal) {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+    setReviewRating(5);
+  }
+}
+window.openReviewModal = openReviewModal;
+
+function closeReviewModal(event) {
+  const modal = document.getElementById("reviewModalBackdrop");
+  if (modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+}
+window.closeReviewModal = closeReviewModal;
+
+// Envío de la reseña con validación estricta de DNI (8 dígitos)
+function submitVerifiedReview(e) {
+  e.preventDefault();
+
+  const nameInput = document.getElementById("reviewAuthorName");
+  const dniInput = document.getElementById("reviewAuthorDni");
+  const dishSelect = document.getElementById("reviewDish");
+  const commentInput = document.getElementById("reviewComment");
+
+  const name = nameInput ? nameInput.value.trim() : "";
+  const dni = dniInput ? dniInput.value.trim() : "";
+  const dish = dishSelect ? dishSelect.value : "";
+  const comment = commentInput ? commentInput.value.trim() : "";
+
+  if (!name) {
+    alert("Por favor, ingresa tu nombre completo.");
+    if (nameInput) nameInput.focus();
+    return;
+  }
+
+  // Validación estricta de DNI peruano: exactamente 8 dígitos numéricos
+  const dniRegex = /^\d{8}$/;
+  if (!dniRegex.test(dni)) {
+    alert("⚠️ El número de DNI debe contener exactamente 8 dígitos numéricos para verificar que eres un comensal real.");
+    if (dniInput) dniInput.focus();
+    return;
+  }
+
+  if (comment.length < 10) {
+    alert("Por favor, escribe un comentario de al menos 10 caracteres compartiendo tu experiencia.");
+    if (commentInput) commentInput.focus();
+    return;
+  }
+
+  const newReview = {
+    id: "rev_" + Date.now(),
+    author: name,
+    dni: dni,
+    dish: dish,
+    rating: currentReviewRating,
+    comment: comment,
+    date: new Date().toLocaleDateString("es-PE"),
+    approved: false // En espera de aprobación del dueño para proteger la reputación del negocio
+  };
+
+  const reviews = getStoredReviews();
+  reviews.push(newReview);
+  saveStoredReviews(reviews);
+
+  // Cerrar modal y limpiar
+  closeReviewModal();
+  e.target.reset();
+  setReviewRating(5);
+
+  showToast("¡Reseña registrada con éxito! Pasará por una breve validación.");
+
+  // Ofrecer al comensal notificar al dueño por WhatsApp
+  const confirmWa = confirm(
+    "¡Muchas gracias por tu reseña!\n\nTu opinión ha sido registrada con tu DNI (" + dni + ") para garantizar comensales reales.\n\n¿Deseas enviar tu constancia de reseña por WhatsApp para que el dueño la apruebe de inmediato?"
+  );
+
+  if (confirmWa) {
+    const stars = "⭐".repeat(newReview.rating);
+    const textMsg = `*NUEVA RESEÑA VERIFICADA (DNI: ${dni})*\n\n` +
+      `👤 *Cliente:* ${name}\n` +
+      `🆔 *DNI:* ${dni}\n` +
+      `🐟 *Plato:* ${dish}\n` +
+      `⭐ *Calificación:* ${stars}\n` +
+      `💬 *Comentario:* "${comment}"\n\n` +
+      `_Enviado desde la web para aprobación en el portal._`;
+    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(textMsg)}`, "_blank");
+  }
+}
+window.submitVerifiedReview = submitVerifiedReview;
+
+// Panel de Moderación para el Dueño
+function openAdminReviewModal() {
+  if (!adminAuthed) {
+    const pwd = prompt("Ingresa la clave de administrador para gestionar las reseñas:", "");
+    if (pwd !== "delicias2026") {
+      if (pwd !== null) {
+        alert("Clave incorrecta. Solo el administrador puede gestionar las reseñas.");
+      }
+      return;
+    }
+    adminAuthed = true;
+  }
+
+  renderAdminReviewsList();
+  const modal = document.getElementById("adminReviewModalBackdrop");
+  if (modal) {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+}
+window.openAdminReviewModal = openAdminReviewModal;
+
+function closeAdminReviewModal(event) {
+  const modal = document.getElementById("adminReviewModalBackdrop");
+  if (modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+}
+window.closeAdminReviewModal = closeAdminReviewModal;
+
+function renderAdminReviewsList() {
+  const container = document.getElementById("adminContentWrap");
+  if (!container) return;
+
+  const reviews = getStoredReviews();
+  const pending = reviews.filter(r => !r.approved);
+  const approved = reviews.filter(r => r.approved);
+
+  let html = `
+    <div style="margin-bottom: 15px; font-size: 0.88rem; color: #475569;">
+      <strong>Resumen:</strong> ${pending.length} pendientes de aprobación • ${approved.length} publicadas en la web.
+    </div>
+  `;
+
+  if (reviews.length === 0) {
+    html += `
+      <div style="text-align: center; padding: 30px; color: #94a3b8;">
+        <i class="fa-solid fa-inbox" style="font-size: 2rem; margin-bottom: 8px;"></i>
+        <p>No hay reseñas registradas aún en el sistema.</p>
+      </div>
+    `;
+    container.innerHTML = html;
+    return;
+  }
+
+  html += `<h4 style="font-size: 0.95rem; color: #023e8a; margin: 15px 0 10px;">📋 Pendientes de Aprobación (${pending.length})</h4>`;
+  if (pending.length === 0) {
+    html += `<p style="font-size: 0.82rem; color: #64748b; font-style: italic;">No hay reseñas pendientes.</p>`;
+  } else {
+    html += `<div class="admin-reviews-list">`;
+    pending.forEach(r => {
+      const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+      html += `
+        <div class="admin-review-item">
+          <div class="admin-review-header">
+            <span class="admin-review-name">${escapeHtml(r.author)}</span>
+            <span class="admin-review-dni"><i class="fa-solid fa-id-card"></i> DNI: ${r.dni}</span>
+            <span style="color: #f77f00; font-size: 0.9rem;">${stars}</span>
+          </div>
+          <div class="admin-review-dish"><i class="fa-solid fa-utensils"></i> ${escapeHtml(r.dish || '')} • ${r.date}</div>
+          <div class="admin-review-text">"${escapeHtml(r.comment)}"</div>
+          <div class="admin-review-actions">
+            <button class="btn-admin-approve" onclick="approveReview('${r.id}')">
+              <i class="fa-solid fa-check"></i> Aprobar y Publicar
+            </button>
+            <button class="btn-admin-reject" onclick="deleteReview('${r.id}')">
+              <i class="fa-solid fa-trash"></i> Descartar
+            </button>
+          </div>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  }
+
+  html += `<h4 style="font-size: 0.95rem; color: #023e8a; margin: 20px 0 10px;">✅ Reseñas Publicadas (${approved.length})</h4>`;
+  if (approved.length === 0) {
+    html += `<p style="font-size: 0.82rem; color: #64748b; font-style: italic;">Aún no se ha publicado ninguna reseña.</p>`;
+  } else {
+    html += `<div class="admin-reviews-list">`;
+    approved.forEach(r => {
+      const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+      html += `
+        <div class="admin-review-item">
+          <div class="admin-review-header">
+            <span class="admin-review-name">${escapeHtml(r.author)}</span>
+            <span class="admin-review-dni"><i class="fa-solid fa-id-card"></i> DNI: ${r.dni}</span>
+            <span style="color: #f77f00; font-size: 0.9rem;">${stars}</span>
+          </div>
+          <div class="admin-review-dish"><i class="fa-solid fa-utensils"></i> ${escapeHtml(r.dish || '')} • ${r.date}</div>
+          <div class="admin-review-text">"${escapeHtml(r.comment)}"</div>
+          <div class="admin-review-actions">
+            <button class="btn-admin-reject" onclick="unpublishReview('${r.id}')">
+              <i class="fa-solid fa-eye-slash"></i> Despublicar
+            </button>
+            <button class="btn-admin-reject" onclick="deleteReview('${r.id}')">
+              <i class="fa-solid fa-trash"></i> Eliminar
+            </button>
+          </div>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+function approveReview(id) {
+  const reviews = getStoredReviews();
+  const target = reviews.find(r => r.id === id);
+  if (target) {
+    target.approved = true;
+    saveStoredReviews(reviews);
+    renderReviews();
+    renderAdminReviewsList();
+    showToast("¡Reseña aprobada y publicada en la web!");
+  }
+}
+window.approveReview = approveReview;
+
+function unpublishReview(id) {
+  const reviews = getStoredReviews();
+  const target = reviews.find(r => r.id === id);
+  if (target) {
+    target.approved = false;
+    saveStoredReviews(reviews);
+    renderReviews();
+    renderAdminReviewsList();
+    showToast("Reseña despublicada.");
+  }
+}
+window.unpublishReview = unpublishReview;
+
+function deleteReview(id) {
+  if (!confirm("¿Seguro que deseas descartar/eliminar esta reseña?")) return;
+  let reviews = getStoredReviews();
+  reviews = reviews.filter(r => r.id !== id);
+  saveStoredReviews(reviews);
+  renderReviews();
+  renderAdminReviewsList();
+  showToast("Reseña eliminada.");
+}
+window.deleteReview = deleteReview;
+
 // ==========================================================================
 // EVENT LISTENERS DOMContentLoaded
 // ==========================================================================
 document.addEventListener("DOMContentLoaded", () => {
-  // Renderizar carta inicial y carrito
+  // Renderizar carta inicial, carrito y reseñas
   renderMenu();
   updateCartUI();
+  renderReviews();
 
   // Filtrado por Categorías
   const categoryButtons = document.querySelectorAll(".category-tab-btn");
   categoryButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-      categoryButtons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      currentCategory = btn.getAttribute("data-category");
-      renderMenu();
+      setCategory(btn.getAttribute("data-category"));
     });
   });
 
@@ -932,11 +1486,14 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.addEventListener("click", closeCartDrawer);
   }
 
-  // Cerrar QuickView con tecla Escape
+  // Cerrar Modales con tecla Escape
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeCartDrawer();
       closeQuickView();
+      closeQrModal();
+      closeReviewModal();
+      closeAdminReviewModal();
     }
   });
 
