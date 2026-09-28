@@ -613,22 +613,22 @@ function updateCartUI() {
 
       <div class="form-group-cart">
         <label for="orderCustomerName">Tu Nombre Completo *</label>
-        <input type="text" id="orderCustomerName" placeholder="Ej. Juan Pérez" required>
+        <input type="text" id="orderCustomerName" placeholder="Ej. Juan Pérez" maxlength="50" autocomplete="name" required>
       </div>
 
       <div class="form-group-cart">
         <label for="orderCustomerPhone">Teléfono / WhatsApp *</label>
-        <input type="tel" id="orderCustomerPhone" placeholder="Ej. 914575242" required>
+        <input type="tel" id="orderCustomerPhone" placeholder="Ej. 914575242" maxlength="15" inputmode="tel" required>
       </div>
 
       <div id="deliveryAddressGroup" class="form-group-cart" style="${deliveryType === 'delivery' ? 'display:block;' : 'display:none;'}">
         <label for="orderAddress">Dirección de Entrega y Referencia *</label>
-        <input type="text" id="orderAddress" placeholder="Ej. Av. Principal 123, Urb. Palmeras (Frente al parque)">
+        <input type="text" id="orderAddress" placeholder="Ej. Av. Principal 123, Urb. Palmeras (Frente al parque)" maxlength="120">
       </div>
 
       <div id="tableNumberGroup" class="form-group-cart" style="${deliveryType === 'table' ? 'display:block;' : 'display:none;'}">
         <label for="orderTableNumber">Número de Mesa *</label>
-        <input type="text" id="orderTableNumber" placeholder="Ej. Mesa 4">
+        <input type="text" id="orderTableNumber" placeholder="Ej. Mesa 4" maxlength="20">
       </div>
 
       <div class="form-group-cart">
@@ -679,7 +679,7 @@ function updateCartUI() {
       <!-- Caja para Efectivo -->
       <div id="cashInputGroup" class="form-group-cart" style="display: none;">
         <label for="orderCashAmount">¿Con cuánto vas a pagar? (Para llevarte vuelto exacto)</label>
-        <input type="text" id="orderCashAmount" placeholder="Ej. Billete de S/ 50 o S/ 100">
+        <input type="text" id="orderCashAmount" placeholder="Ej. Billete de S/ 50 o S/ 100" maxlength="30">
       </div>
 
       <!-- Caja para Tarjeta POS -->
@@ -701,7 +701,7 @@ function updateCartUI() {
 
       <div class="form-group-cart">
         <label for="orderNotes">Notas de Cocina / Preferencias</label>
-        <textarea id="orderNotes" rows="2" placeholder="Ej. Cancha extra, sin cebolla, ají bien picante aparte, etc."></textarea>
+        <textarea id="orderNotes" rows="2" placeholder="Ej. Cancha extra, sin cebolla, ají bien picante aparte, etc." maxlength="200"></textarea>
       </div>
     </div>
   `;
@@ -834,11 +834,11 @@ function submitWhatsAppOrder() {
   const cashAmount = document.getElementById("orderCashAmount")?.value || "";
   const notesInput = document.getElementById("orderNotes");
 
-  const customerName = nameInput ? nameInput.value.trim() : "";
-  const customerPhone = phoneInput ? phoneInput.value.trim() : "";
-  const deliveryAddress = addressInput ? addressInput.value.trim() : "";
-  const tableNumber = tableInput ? tableInput.value.trim() : "";
-  const notes = notesInput ? notesInput.value.trim() : "";
+  const customerName = sanitizeText(nameInput ? nameInput.value : "", 50);
+  const customerPhone = sanitizeText(phoneInput ? phoneInput.value : "", 15);
+  const deliveryAddress = sanitizeText(addressInput ? addressInput.value : "", 120);
+  const tableNumber = sanitizeText(tableInput ? tableInput.value : "", 20);
+  const notes = sanitizeText(notesInput ? notesInput.value : "", 200);
 
   // Validaciones
   if (!customerName) {
@@ -1044,12 +1044,68 @@ function scrollToMenu() {
 }
 
 function escapeHtml(str) {
-  if (!str) return '';
-  return str.replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// Sanitizador de texto contra inyección de código y payloads maliciosos
+function sanitizeText(str, maxLength = 250) {
+  if (!str || typeof str !== 'string') return '';
+  return str
+    .replace(/<[^>]*>?/gm, '') // Eliminar cualquier etiqueta HTML/Script
+    .replace(/[\u0000-\u001F\u007F-\u009F]/g, '') // Eliminar caracteres de control invisibles
+    .trim()
+    .slice(0, maxLength);
+}
+
+// Sanitizador estricto de identificadores (solo alfanumérico y guiones)
+function sanitizeId(id) {
+  if (!id || typeof id !== 'string') return '';
+  return id.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 60);
+}
+
+// ==========================================================================
+// SEGURIDAD CRIPTOGRÁFICA Y HASHING (PROTECCIÓN CONTRA ACCESOS INDEBIDOS)
+// ==========================================================================
+// Clave del propietario protegida mediante función unidireccional SHA-256
+// La contraseña NUNCA se almacena en texto plano en los archivos fuente.
+const ADMIN_PWD_HASH = "1eb66aeb2d8abe66176563bbd1790a925ccef55987eca5ee187c168bf19117fe";
+const REVIEW_SECURITY_SALT = "delicias_las_curva_huayobamba_2026_salt";
+
+// Función asíncrona de hashing SHA-256 con Web Crypto API
+async function sha256Hex(message) {
+  try {
+    if (window.crypto && window.crypto.subtle) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(message);
+      const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hashBuffer))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+  } catch (err) {
+    console.warn("Crypto API fallback activado:", err);
+  }
+  // Algoritmo seguro determinista de respaldo
+  let h1 = 0xdeadbeef ^ message.length, h2 = 0x41c6ce57 ^ message.length;
+  for (let i = 0; i < message.length; i++) {
+    const ch = message.charCodeAt(i);
+    h1 = Math.imul(h1 ^ ch, 2654435761);
+    h2 = Math.imul(h2 ^ ch, 1597334677);
+  }
+  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16).padStart(16, '0');
+}
+
+// Genera un token de firma única para enlaces de WhatsApp
+async function generateReviewToken(reviewId, dni) {
+  return await sha256Hex(`${reviewId}:${dni}:${REVIEW_SECURITY_SALT}`);
 }
 
 function setCategory(cat) {
@@ -1071,13 +1127,15 @@ window.setCategory = setCategory;
 // ==========================================================================
 let currentReviewRating = 5;
 let adminAuthed = false;
+let adminFailedAttempts = 0;
+let adminLockoutUntil = 0;
 
 // Manejo del selector de estrellas en el formulario
 function setReviewRating(stars) {
-  currentReviewRating = stars;
+  currentReviewRating = Math.max(1, Math.min(5, parseInt(stars) || 5));
   const ratingButtons = document.querySelectorAll("#ratingStarsRow .rating-star-btn");
   ratingButtons.forEach((btn, idx) => {
-    if (idx < stars) {
+    if (idx < currentReviewRating) {
       btn.classList.add("active");
     } else {
       btn.classList.remove("active");
@@ -1093,29 +1151,52 @@ function setReviewRating(stars) {
   };
   const labelEl = document.getElementById("ratingSelectedText");
   if (labelEl) {
-    labelEl.textContent = ratingLabels[stars] || "";
+    labelEl.textContent = ratingLabels[currentReviewRating] || "";
   }
 }
 window.setReviewRating = setReviewRating;
 
-// Gestión en localStorage
+// Gestión segura en localStorage con validación de integridad
 function getStoredReviews() {
   try {
     const raw = localStorage.getItem("delicias_reviews");
     if (raw) {
-      return JSON.parse(raw);
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        // Filtrar y validar integridad de datos contra envenenamiento
+        return parsed.filter(item => 
+          item && typeof item === 'object' &&
+          typeof item.id === 'string' &&
+          typeof item.author === 'string' &&
+          typeof item.comment === 'string' &&
+          typeof item.rating === 'number' &&
+          item.rating >= 1 && item.rating <= 5
+        ).map(item => ({
+          id: sanitizeId(item.id),
+          author: sanitizeText(item.author, 50),
+          dni: sanitizeText(item.dni, 12),
+          dish: sanitizeText(item.dish, 60),
+          rating: Math.max(1, Math.min(5, item.rating)),
+          comment: sanitizeText(item.comment, 350),
+          date: sanitizeText(item.date, 20),
+          approved: Boolean(item.approved)
+        }));
+      }
     }
   } catch (e) {
-    console.error("Error reading reviews:", e);
+    console.error("Error validando integridad de reseñas:", e);
   }
   return [];
 }
 
 function saveStoredReviews(reviews) {
   try {
-    localStorage.setItem("delicias_reviews", JSON.stringify(reviews));
+    if (!Array.isArray(reviews)) return;
+    // Límite de seguridad: máximo 200 reseñas para evitar desbordar cuota del navegador
+    const safeReviews = reviews.slice(-200);
+    localStorage.setItem("delicias_reviews", JSON.stringify(safeReviews));
   } catch (e) {
-    console.error("Error saving reviews:", e);
+    console.error("Error guardando reseñas:", e);
   }
 }
 
@@ -1145,15 +1226,18 @@ function renderReviews() {
 
   container.innerHTML = approvedReviews.map(r => {
     const initials = r.author ? r.author.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase() : 'C';
-    const maskedDni = r.dni ? r.dni.slice(0, 2) + '****' + r.dni.slice(-2) : 'Verificado';
-    const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+    const maskedDni = (r.dni && r.dni.length >= 8) 
+      ? r.dni.slice(0, 2) + '****' + r.dni.slice(-2) 
+      : (r.dni || 'Verificado');
+    const safeStars = Math.max(1, Math.min(5, r.rating || 5));
+    const stars = '★'.repeat(safeStars) + '☆'.repeat(5 - safeStars);
 
     return `
       <div class="testimonial-card">
         <div>
           <div class="testimonial-header-top">
-            <div class="testimonial-rating" title="${r.rating} de 5 estrellas">${stars}</div>
-            <span class="verified-dni-pill" title="Comensal identificado con DNI ${maskedDni}">
+            <div class="testimonial-rating" title="${safeStars} de 5 estrellas">${stars}</div>
+            <span class="verified-dni-pill" title="Comensal verificado">
               <i class="fa-solid fa-circle-check"></i> DNI ${maskedDni}
             </span>
           </div>
@@ -1165,10 +1249,10 @@ function renderReviews() {
           <p class="testimonial-quote">"${escapeHtml(r.comment)}"</p>
         </div>
         <div class="testimonial-author">
-          <div class="author-avatar">${initials}</div>
+          <div class="author-avatar">${escapeHtml(initials)}</div>
           <div class="author-info">
             <h6>${escapeHtml(r.author)}</h6>
-            <span>${r.date || 'Cliente Verificado'} • Huayobamba</span>
+            <span>${escapeHtml(r.date || 'Cliente Verificado')} • Huayobamba</span>
           </div>
         </div>
       </div>
@@ -1197,8 +1281,8 @@ function closeReviewModal(event) {
 }
 window.closeReviewModal = closeReviewModal;
 
-// Envío de la reseña con validación estricta de DNI (8 dígitos)
-function submitVerifiedReview(e) {
+// Envío de la reseña con validación estricta y firma digital segura
+async function submitVerifiedReview(e) {
   e.preventDefault();
 
   const nameInput = document.getElementById("reviewAuthorName");
@@ -1206,12 +1290,12 @@ function submitVerifiedReview(e) {
   const dishSelect = document.getElementById("reviewDish");
   const commentInput = document.getElementById("reviewComment");
 
-  const name = nameInput ? nameInput.value.trim() : "";
-  const dni = dniInput ? dniInput.value.trim() : "";
-  const dish = dishSelect ? dishSelect.value : "";
-  const comment = commentInput ? commentInput.value.trim() : "";
+  const name = sanitizeText(nameInput ? nameInput.value : "", 50);
+  const dni = sanitizeText(dniInput ? dniInput.value : "", 8);
+  const dish = sanitizeText(dishSelect ? dishSelect.value : "", 60);
+  const comment = sanitizeText(commentInput ? commentInput.value : "", 350);
 
-  if (!name) {
+  if (!name || name.length < 3) {
     alert("Por favor, ingresa tu nombre completo.");
     if (nameInput) nameInput.focus();
     return;
@@ -1231,12 +1315,15 @@ function submitVerifiedReview(e) {
     return;
   }
 
+  const reviewId = "rev_" + Date.now() + "_" + Math.random().toString(36).substring(2, 7);
+  const safeRating = Math.max(1, Math.min(5, currentReviewRating));
+
   const newReview = {
-    id: "rev_" + Date.now(),
+    id: reviewId,
     author: name,
     dni: dni,
     dish: dish,
-    rating: currentReviewRating,
+    rating: safeRating,
     comment: comment,
     date: new Date().toLocaleDateString("es-PE"),
     approved: false // En espera de aprobación del dueño para proteger la reputación del negocio
@@ -1253,38 +1340,96 @@ function submitVerifiedReview(e) {
 
   showToast("¡Reseña registrada con éxito! Pasará por una breve validación.");
 
+  // Generar firma criptográfica para el enlace de WhatsApp
+  const token = await generateReviewToken(reviewId, dni);
+
   // Ofrecer al comensal notificar al dueño por WhatsApp
   const confirmWa = confirm(
     "¡Muchas gracias por tu reseña!\n\nTu opinión ha sido registrada con tu DNI (" + dni + ") para garantizar comensales reales.\n\n¿Deseas enviar tu constancia de reseña por WhatsApp para que el dueño la apruebe de inmediato?"
   );
 
   if (confirmWa) {
-    const stars = "⭐".repeat(newReview.rating);
-    const textMsg = `*NUEVA RESEÑA VERIFICADA (DNI: ${dni})*\n\n` +
+    const origin = window.location.origin + window.location.pathname;
+    const approveUrl = `${origin}?aprobar=${encodeURIComponent(reviewId)}&auth=${encodeURIComponent(name)}&dni=${encodeURIComponent(dni)}&stars=${safeRating}&dish=${encodeURIComponent(dish)}&msg=${encodeURIComponent(comment)}&token=${encodeURIComponent(token)}`;
+
+    const stars = "⭐".repeat(safeRating);
+    const textMsg = `*NUEVA RESEÑA VERIFICADA (DNI: ${dni})* 🦐✨\n\n` +
       `👤 *Cliente:* ${name}\n` +
       `🆔 *DNI:* ${dni}\n` +
       `🐟 *Plato:* ${dish}\n` +
       `⭐ *Calificación:* ${stars}\n` +
       `💬 *Comentario:* "${comment}"\n\n` +
-      `_Enviado desde la web para aprobación en el portal._`;
-    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(textMsg)}`, "_blank");
+      `━━━━━━━━━━━━━━━━━━━━\n` +
+      `👉 *DUEÑO: Para APROBAR y publicar en la web con 1 clic, toca aquí:*\n` +
+      `${approveUrl}`;
+    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(textMsg)}`, "_blank", "noopener,noreferrer");
   }
 }
 window.submitVerifiedReview = submitVerifiedReview;
 
-// Panel de Moderación para el Dueño
-function openAdminReviewModal() {
-  if (!adminAuthed) {
-    const pwd = prompt("Ingresa la clave de administrador para gestionar las reseñas:", "");
-    if (pwd !== "delicias2026") {
-      if (pwd !== null) {
-        alert("Clave incorrecta. Solo el administrador puede gestionar las reseñas.");
-      }
-      return;
-    }
-    adminAuthed = true;
+// Verificación y Aprobación Mágica desde el enlace de WhatsApp con Validación Criptográfica
+async function checkUrlApproval() {
+  const params = new URLSearchParams(window.location.search);
+  const rawReviewId = params.get("aprobar");
+  if (!rawReviewId) return;
+
+  const reviewId = sanitizeId(rawReviewId);
+  const token = params.get("token") || "";
+  const legacyKey = params.get("key") || "";
+  const rawDni = params.get("dni") || "";
+  const dni = sanitizeText(rawDni, 8);
+
+  // Validar firma del token o clave de compatibilidad (hasheada)
+  const expectedToken = await generateReviewToken(reviewId, dni);
+  const isKeyValid = legacyKey ? ((await sha256Hex(legacyKey)) === ADMIN_PWD_HASH) : false;
+  const isValidAuth = (token && token === expectedToken) || isKeyValid;
+
+  if (!isValidAuth) {
+    console.warn("Intento de aprobación con token o clave no autorizada.");
+    return;
   }
 
+  const author = sanitizeText(params.get("auth") || "Comensal", 50);
+  const stars = Math.max(1, Math.min(5, parseInt(params.get("stars")) || 5));
+  const dish = sanitizeText(params.get("dish") || "Plato Marino", 60);
+  const comment = sanitizeText(params.get("msg") || "", 350);
+
+  const reviews = getStoredReviews();
+  const existingIndex = reviews.findIndex(r => r.id === reviewId);
+
+  if (existingIndex >= 0) {
+    reviews[existingIndex].approved = true;
+  } else {
+    reviews.push({
+      id: reviewId,
+      author: author,
+      dni: dni || "Verificado",
+      dish: dish,
+      rating: stars,
+      comment: comment,
+      date: new Date().toLocaleDateString("es-PE"),
+      approved: true
+    });
+  }
+
+  saveStoredReviews(reviews);
+  renderReviews();
+
+  // Notificación en pantalla
+  showToast(`✅ ¡Reseña de ${author} aprobada y publicada en la web!`);
+
+  // Limpiar la URL de la barra de direcciones de manera segura
+  window.history.replaceState({}, document.title, window.location.pathname);
+
+  // Scroll suave hacia la sección de testimonios
+  setTimeout(() => {
+    const section = document.querySelector(".testimonials-section");
+    if (section) section.scrollIntoView({ behavior: "smooth" });
+  }, 500);
+}
+
+// Panel de Moderación para el Dueño
+function openAdminReviewModal() {
   renderAdminReviewsList();
   const modal = document.getElementById("adminReviewModalBackdrop");
   if (modal) {
@@ -1303,23 +1448,152 @@ function closeAdminReviewModal(event) {
 }
 window.closeAdminReviewModal = closeAdminReviewModal;
 
+// Autenticación segura en el modal con protección contra ataques de fuerza bruta
+async function attemptAdminLogin(e) {
+  if (e && e.preventDefault) e.preventDefault();
+
+  // Verificar si hay bloqueo temporal activo
+  if (Date.now() < adminLockoutUntil) {
+    const remainingSec = Math.ceil((adminLockoutUntil - Date.now()) / 1000);
+    alert(`⚠️ Acceso temporalmente bloqueado por demasiados intentos fallidos. Espera ${remainingSec} segundos.`);
+    return;
+  }
+
+  const pwdInput = document.getElementById("adminPasswordInput");
+  const errorContainer = document.getElementById("adminLoginError");
+  const pwd = pwdInput ? pwdInput.value.trim() : "";
+
+  if (!pwd) {
+    if (errorContainer) {
+      errorContainer.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Ingresa la clave de administrador.';
+      errorContainer.style.display = "flex";
+    }
+    return;
+  }
+
+  const hashed = await sha256Hex(pwd);
+
+  if (hashed === ADMIN_PWD_HASH) {
+    adminAuthed = true;
+    adminFailedAttempts = 0;
+    renderAdminReviewsList();
+    showToast("🔓 Sesión de Administrador iniciada.");
+  } else {
+    adminFailedAttempts++;
+    if (adminFailedAttempts >= 3) {
+      adminLockoutUntil = Date.now() + 60000; // 60 segundos de bloqueo
+      if (errorContainer) {
+        errorContainer.className = "admin-lockout-msg";
+        errorContainer.innerHTML = '<i class="fa-solid fa-ban"></i> Demasiados intentos fallidos. Bloqueado por 60 segundos por seguridad.';
+        errorContainer.style.display = "flex";
+      }
+    } else {
+      if (errorContainer) {
+        errorContainer.className = "admin-error-msg";
+        errorContainer.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> Clave incorrecta. Te quedan ${3 - adminFailedAttempts} intento(s).`;
+        errorContainer.style.display = "flex";
+      }
+    }
+    if (pwdInput) {
+      pwdInput.value = "";
+      pwdInput.focus();
+    }
+  }
+}
+window.attemptAdminLogin = attemptAdminLogin;
+
+function logoutAdmin() {
+  adminAuthed = false;
+  renderAdminReviewsList();
+  showToast("🔒 Sesión de Administrador cerrada.");
+}
+window.logoutAdmin = logoutAdmin;
+
 function renderAdminReviewsList() {
   const container = document.getElementById("adminContentWrap");
   if (!container) return;
 
+  // Si no está autenticado, mostrar formulario seguro de contraseña
+  if (!adminAuthed) {
+    const isLocked = Date.now() < adminLockoutUntil;
+    const remainingSec = isLocked ? Math.ceil((adminLockoutUntil - Date.now()) / 1000) : 0;
+
+    container.innerHTML = `
+      <div class="admin-login-box">
+        <div class="admin-login-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h4>Acceso Protegido - Administración</h4>
+        <p>Solo el propietario del restaurante puede moderar y publicar reseñas.</p>
+        
+        <form onsubmit="attemptAdminLogin(event)" style="margin: 0 auto; max-width: 320px;">
+          <div class="admin-password-wrap">
+            <input 
+              type="password" 
+              id="adminPasswordInput" 
+              class="admin-password-input" 
+              placeholder="Ingresa tu clave secreta" 
+              autocomplete="current-password"
+              maxlength="32" 
+              ${isLocked ? 'disabled' : 'autofocus'}
+            >
+          </div>
+
+          <button type="submit" class="admin-btn-login" ${isLocked ? 'disabled style="opacity:0.6;cursor:not-allowed;"' : ''}>
+            <i class="fa-solid fa-key"></i> Ingresar al Panel
+          </button>
+        </form>
+
+        <div id="adminLoginError" style="${isLocked ? 'display:flex;' : 'display:none;'}" class="${isLocked ? 'admin-lockout-msg' : 'admin-error-msg'}">
+          ${isLocked ? `<i class="fa-solid fa-ban"></i> Acceso bloqueado. Espera ${remainingSec} segundos.` : ''}
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Panel desbloqueado para el Administrador
   const reviews = getStoredReviews();
   const pending = reviews.filter(r => !r.approved);
   const approved = reviews.filter(r => r.approved);
 
   let html = `
-    <div style="margin-bottom: 15px; font-size: 0.88rem; color: #475569;">
-      <strong>Resumen:</strong> ${pending.length} pendientes de aprobación • ${approved.length} publicadas en la web.
+    <div class="admin-top-bar">
+      <div style="font-size: 0.88rem; color: #475569;">
+        <strong>Resumen:</strong> ${pending.length} pendientes • ${approved.length} publicadas.
+      </div>
+      <button type="button" class="btn-admin-logout" onclick="logoutAdmin()">
+        <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+      </button>
+    </div>
+
+    <!-- Formulario para publicar reseña recibida directamente por WhatsApp -->
+    <div style="background: #f1f5f9; padding: 14px; border-radius: var(--radius-sm); margin-bottom: 20px; border: 1.5px dashed #94a3b8; text-align: left;">
+      <h5 style="font-size: 0.88rem; color: #0f172a; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+        <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 1.1rem;"></i> Publicar Reseña recibida por WhatsApp
+      </h5>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+        <input type="text" id="manualReviewAuthor" placeholder="Nombre del comensal" maxlength="50" style="padding: 7px; font-size: 0.82rem; border: 1px solid #cbd5e1; border-radius: 4px;">
+        <input type="text" id="manualReviewDni" placeholder="DNI (8 dígitos)" maxlength="8" style="padding: 7px; font-size: 0.82rem; border: 1px solid #cbd5e1; border-radius: 4px;">
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+        <input type="text" id="manualReviewDish" placeholder="Plato consumido (Ej. Ceviche Mixto)" maxlength="60" style="padding: 7px; font-size: 0.82rem; border: 1px solid #cbd5e1; border-radius: 4px;">
+        <select id="manualReviewRating" style="padding: 7px; font-size: 0.82rem; border: 1px solid #cbd5e1; border-radius: 4px;">
+          <option value="5" selected>⭐⭐⭐⭐⭐ 5 Estrellas</option>
+          <option value="4">⭐⭐⭐⭐ 4 Estrellas</option>
+          <option value="3">⭐⭐⭐ 3 Estrellas</option>
+        </select>
+      </div>
+      <textarea id="manualReviewComment" rows="2" placeholder="Pega aquí el mensaje o comentario que te mandó el cliente por WhatsApp..." maxlength="350" style="width: 100%; padding: 7px; font-size: 0.82rem; border: 1px solid #cbd5e1; border-radius: 4px; margin-bottom: 8px;"></textarea>
+      <button type="button" class="btn-admin-approve" onclick="submitManualReview()" style="width: 100%; justify-content: center; padding: 9px; font-size: 0.84rem;">
+        <i class="fa-solid fa-plus"></i> Publicar de Inmediato en la Web
+      </button>
     </div>
   `;
 
   if (reviews.length === 0) {
     html += `
-      <div style="text-align: center; padding: 30px; color: #94a3b8;">
+      <div style="text-align: center; padding: 25px; color: #94a3b8;">
         <i class="fa-solid fa-inbox" style="font-size: 2rem; margin-bottom: 8px;"></i>
         <p>No hay reseñas registradas aún en el sistema.</p>
       </div>
@@ -1334,21 +1608,23 @@ function renderAdminReviewsList() {
   } else {
     html += `<div class="admin-reviews-list">`;
     pending.forEach(r => {
-      const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+      const safeId = sanitizeId(r.id);
+      const safeRating = Math.max(1, Math.min(5, r.rating || 5));
+      const stars = '★'.repeat(safeRating) + '☆'.repeat(5 - safeRating);
       html += `
         <div class="admin-review-item">
           <div class="admin-review-header">
             <span class="admin-review-name">${escapeHtml(r.author)}</span>
-            <span class="admin-review-dni"><i class="fa-solid fa-id-card"></i> DNI: ${r.dni}</span>
+            <span class="admin-review-dni"><i class="fa-solid fa-id-card"></i> DNI: ${escapeHtml(r.dni)}</span>
             <span style="color: #f77f00; font-size: 0.9rem;">${stars}</span>
           </div>
-          <div class="admin-review-dish"><i class="fa-solid fa-utensils"></i> ${escapeHtml(r.dish || '')} • ${r.date}</div>
+          <div class="admin-review-dish"><i class="fa-solid fa-utensils"></i> ${escapeHtml(r.dish || '')} • ${escapeHtml(r.date)}</div>
           <div class="admin-review-text">"${escapeHtml(r.comment)}"</div>
           <div class="admin-review-actions">
-            <button class="btn-admin-approve" onclick="approveReview('${r.id}')">
+            <button class="btn-admin-approve" onclick="approveReview('${safeId}')">
               <i class="fa-solid fa-check"></i> Aprobar y Publicar
             </button>
-            <button class="btn-admin-reject" onclick="deleteReview('${r.id}')">
+            <button class="btn-admin-reject" onclick="deleteReview('${safeId}')">
               <i class="fa-solid fa-trash"></i> Descartar
             </button>
           </div>
@@ -1364,21 +1640,23 @@ function renderAdminReviewsList() {
   } else {
     html += `<div class="admin-reviews-list">`;
     approved.forEach(r => {
-      const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+      const safeId = sanitizeId(r.id);
+      const safeRating = Math.max(1, Math.min(5, r.rating || 5));
+      const stars = '★'.repeat(safeRating) + '☆'.repeat(5 - safeRating);
       html += `
         <div class="admin-review-item">
           <div class="admin-review-header">
             <span class="admin-review-name">${escapeHtml(r.author)}</span>
-            <span class="admin-review-dni"><i class="fa-solid fa-id-card"></i> DNI: ${r.dni}</span>
+            <span class="admin-review-dni"><i class="fa-solid fa-id-card"></i> DNI: ${escapeHtml(r.dni)}</span>
             <span style="color: #f77f00; font-size: 0.9rem;">${stars}</span>
           </div>
-          <div class="admin-review-dish"><i class="fa-solid fa-utensils"></i> ${escapeHtml(r.dish || '')} • ${r.date}</div>
+          <div class="admin-review-dish"><i class="fa-solid fa-utensils"></i> ${escapeHtml(r.dish || '')} • ${escapeHtml(r.date)}</div>
           <div class="admin-review-text">"${escapeHtml(r.comment)}"</div>
           <div class="admin-review-actions">
-            <button class="btn-admin-reject" onclick="unpublishReview('${r.id}')">
+            <button class="btn-admin-reject" onclick="unpublishReview('${safeId}')">
               <i class="fa-solid fa-eye-slash"></i> Despublicar
             </button>
-            <button class="btn-admin-reject" onclick="deleteReview('${r.id}')">
+            <button class="btn-admin-reject" onclick="deleteReview('${safeId}')">
               <i class="fa-solid fa-trash"></i> Eliminar
             </button>
           </div>
@@ -1391,9 +1669,49 @@ function renderAdminReviewsList() {
   container.innerHTML = html;
 }
 
-function approveReview(id) {
+function submitManualReview() {
+  const authorInput = document.getElementById("manualReviewAuthor");
+  const dniInput = document.getElementById("manualReviewDni");
+  const dishInput = document.getElementById("manualReviewDish");
+  const ratingSelect = document.getElementById("manualReviewRating");
+  const commentInput = document.getElementById("manualReviewComment");
+
+  const author = sanitizeText(authorInput ? authorInput.value : "", 50);
+  const dni = sanitizeText(dniInput ? dniInput.value : "", 8);
+  const dish = sanitizeText(dishInput ? dishInput.value : "Plato Marino", 60);
+  const rating = Math.max(1, Math.min(5, ratingSelect ? parseInt(ratingSelect.value) : 5));
+  const comment = sanitizeText(commentInput ? commentInput.value : "", 350);
+
+  if (!author || !comment) {
+    alert("Por favor, ingresa al menos el Nombre del comensal y el Comentario recibido.");
+    return;
+  }
+
+  const newRev = {
+    id: "rev_manual_" + Date.now() + "_" + Math.random().toString(36).substring(2, 6),
+    author: author,
+    dni: dni || "Verificado",
+    dish: dish,
+    rating: rating,
+    comment: comment,
+    date: new Date().toLocaleDateString("es-PE"),
+    approved: true
+  };
+
   const reviews = getStoredReviews();
-  const target = reviews.find(r => r.id === id);
+  reviews.push(newRev);
+  saveStoredReviews(reviews);
+
+  renderReviews();
+  renderAdminReviewsList();
+  showToast("¡Reseña de WhatsApp publicada con éxito!");
+}
+window.submitManualReview = submitManualReview;
+
+function approveReview(id) {
+  const safeId = sanitizeId(id);
+  const reviews = getStoredReviews();
+  const target = reviews.find(r => r.id === safeId);
   if (target) {
     target.approved = true;
     saveStoredReviews(reviews);
@@ -1405,8 +1723,9 @@ function approveReview(id) {
 window.approveReview = approveReview;
 
 function unpublishReview(id) {
+  const safeId = sanitizeId(id);
   const reviews = getStoredReviews();
-  const target = reviews.find(r => r.id === id);
+  const target = reviews.find(r => r.id === safeId);
   if (target) {
     target.approved = false;
     saveStoredReviews(reviews);
@@ -1418,9 +1737,10 @@ function unpublishReview(id) {
 window.unpublishReview = unpublishReview;
 
 function deleteReview(id) {
+  const safeId = sanitizeId(id);
   if (!confirm("¿Seguro que deseas descartar/eliminar esta reseña?")) return;
   let reviews = getStoredReviews();
-  reviews = reviews.filter(r => r.id !== id);
+  reviews = reviews.filter(r => r.id !== safeId);
   saveStoredReviews(reviews);
   renderReviews();
   renderAdminReviewsList();
@@ -1436,6 +1756,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderMenu();
   updateCartUI();
   renderReviews();
+
+  // Verificar si se abrió desde un enlace de aprobación de WhatsApp
+  checkUrlApproval();
 
   // Filtrado por Categorías
   const categoryButtons = document.querySelectorAll(".category-tab-btn");

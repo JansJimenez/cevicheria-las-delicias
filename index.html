@@ -6,6 +6,11 @@
   <title>Cevichería Las Delicias | Bar - Cevichería La Curva</title>
   <meta name="description" content="El mejor sabor marino y pesca del día en Bar - Cevichería La Curva 'Las Delicias'. Ceviches, jaleas, causas, arroces con mariscos y cocteles. ¡Pide directo por WhatsApp!">
 
+  <!-- Cabeceras de Seguridad Web (Defensa contra Inyecciones XSS y Clickjacking) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
   <!-- Favicon con el logo oficial -->
   <link rel="icon" type="image/png" href="assets/logo.png">
 
@@ -32,7 +37,7 @@
     </div>
     <div class="top-contact-links">
       <span><i class="fa-regular fa-clock"></i> Todos los días: 8:00 AM - 3:00 PM</span>
-      <a href="https://wa.me/51914575242" target="_blank" rel="noopener">
+      <a href="https://wa.me/51914575242" target="_blank" rel="noopener noreferrer">
         <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> WhatsApp: +51 914 575 242
       </a>
     </div>
@@ -73,7 +78,7 @@
         </button>
 
         <!-- Botón WhatsApp Directo -->
-        <a href="https://wa.me/51914575242?text=Hola%20Cevicheria%20Las%20Delicias,%20deseo%20hacer%20una%20consulta" target="_blank" rel="noopener" class="btn-header-whatsapp">
+        <a href="https://wa.me/51914575242?text=Hola%20Cevicheria%20Las%20Delicias,%20deseo%20hacer%20una%20consulta" target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp">
           <i class="fa-brands fa-whatsapp"></i>
           <span>Pedir por WhatsApp</span>
         </a>
@@ -116,7 +121,7 @@
           <button class="btn-primary-order" onclick="scrollToMenu()">
             <i class="fa-solid fa-utensils"></i> Explorar la Carta
           </button>
-          <a href="https://wa.me/51914575242?text=Hola%20Cevicheria%20Las%20Delicias%20La%20Curva,%20quisiera%20hacer%20un%20pedido%20directo" target="_blank" rel="noopener" class="btn-secondary-wa">
+          <a href="https://wa.me/51914575242?text=Hola%20Cevicheria%20Las%20Delicias%20La%20Curva,%20quisiera%20hacer%20un%20pedido%20directo" target="_blank" rel="noopener noreferrer" class="btn-secondary-wa">
             <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> WhatsApp Directo
           </a>
         </div>
@@ -386,7 +391,7 @@
       <button class="btn-leave-review" onclick="openReviewModal()">
         <i class="fa-solid fa-pen-to-square"></i> Dejar mi Reseña Verificada
       </button>
-      <a href="https://maps.app.goo.gl/noN5QDQ5T2xXwhkS6" target="_blank" rel="noopener" class="btn-gmaps-review">
+      <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer" class="btn-gmaps-review">
         <i class="fa-brands fa-google"></i> Calificar en Google Maps
       </a>
     </div>
@@ -422,7 +427,7 @@
           <div>
             <h5>Nuestra Dirección</h5>
             <p>Avenida Cajamarca #800, Centro Poblado Huayobamba.</p>
-            <a href="https://maps.app.goo.gl/noN5QDQ5T2xXwhkS6" target="_blank" rel="noopener" class="link-open-gmaps">
+            <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer" class="link-open-gmaps">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir en Google Maps
             </a>
           </div>
@@ -468,7 +473,7 @@
           loading="lazy">
         </iframe>
         <div class="map-overlay-action">
-          <a href="https://maps.app.goo.gl/noN5QDQ5T2xXwhkS6" target="_blank" rel="noopener" class="btn-gmaps-direct">
+          <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer" class="btn-gmaps-direct">
             <i class="fa-solid fa-map-location-dot"></i> Abrir en Google Maps
           </a>
         </div>
@@ -493,7 +498,7 @@
           <a href="#" class="footer-social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="#" class="footer-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           <a href="#" class="footer-social-btn" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="https://wa.me/51914575242" target="_blank" rel="noopener" class="footer-social-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://wa.me/51914575242" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
       </div>
 
@@ -516,7 +521,7 @@
           <li><a href="#promociones">Combos Especiales</a></li>
           <li><a href="#nosotros">Nuestra Historia</a></li>
           <li><a href="#ubicacion">Horarios y Ubicación</a></li>
-          <li><a href="javascript:void(0)" onclick="openCartDrawer()">Ver mi Carrito</a></li>
+          <li><a href="#cart" onclick="openCartDrawer(); return false;">Ver mi Carrito</a></li>
         </ul>
       </div>
 
@@ -525,7 +530,7 @@
         <p class="footer-desc" style="margin-bottom: 12px;">
           Haz tus pedidos para delivery o recojo directo por WhatsApp de forma rápida y sencilla.
         </p>
-        <a href="https://wa.me/51914575242?text=Hola%20Cevicheria%20Las%20Delicias,%20deseo%20hacer%20un%20pedido" target="_blank" rel="noopener" class="btn-header-whatsapp" style="display: inline-flex;">
+        <a href="https://wa.me/51914575242?text=Hola%20Cevicheria%20Las%20Delicias,%20deseo%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp" style="display: inline-flex;">
           <i class="fa-brands fa-whatsapp"></i> +51 914 575 242
         </a>
       </div>
@@ -618,7 +623,7 @@
     </button>
 
     <!-- Botón Flotante WhatsApp -->
-    <a href="https://wa.me/51914575242?text=Hola%20Cevicheria%20Las%20Delicias%20La%20Curva,%20quisiera%20hacer%20un%20pedido" target="_blank" rel="noopener" class="floating-wa-btn" title="Contactar por WhatsApp" aria-label="Chatear por WhatsApp">
+    <a href="https://wa.me/51914575242?text=Hola%20Cevicheria%20Las%20Delicias%20La%20Curva,%20quisiera%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" class="floating-wa-btn" title="Contactar por WhatsApp" aria-label="Chatear por WhatsApp">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
   </div>
@@ -718,12 +723,12 @@
 
         <div class="form-group-review">
           <label for="reviewAuthorName">Tu Nombre Completo *</label>
-          <input type="text" id="reviewAuthorName" placeholder="Ej. Carlos Mendoza" required>
+          <input type="text" id="reviewAuthorName" placeholder="Ej. Carlos Mendoza" maxlength="50" autocomplete="name" required>
         </div>
 
         <div class="form-group-review">
           <label for="reviewAuthorDni">Número de DNI (8 dígitos) *</label>
-          <input type="text" id="reviewAuthorDni" placeholder="Ej. 12345678" maxlength="8" pattern="[0-9]{8}" inputmode="numeric" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+          <input type="text" id="reviewAuthorDni" placeholder="Ej. 12345678" maxlength="8" minlength="8" pattern="[0-9]{8}" inputmode="numeric" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
           <span class="dni-helper-text"><i class="fa-solid fa-lock"></i> Exclusivo para verificación. No se muestra en público.</span>
         </div>
 
@@ -752,7 +757,7 @@
 
         <div class="form-group-review">
           <label for="reviewComment">Tu Reseña o Comentario *</label>
-          <textarea id="reviewComment" rows="3" placeholder="Cuéntanos qué tal estuvo el sabor, la frescura, el punto de ají y la atención..." required minlength="10"></textarea>
+          <textarea id="reviewComment" rows="3" placeholder="Cuéntanos qué tal estuvo el sabor, la frescura, el punto de ají y la atención..." required minlength="10" maxlength="350"></textarea>
         </div>
 
         <button type="submit" class="btn-submit-review">
