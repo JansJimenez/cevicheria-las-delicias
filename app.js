@@ -2102,10 +2102,30 @@ function deleteReview(id) {
 }
 window.deleteReview = deleteReview;
 
+// Exponer todas las funciones interactivas en window para garantizar compatibilidad en producción (Vercel / Bundlers)
+window.addToCart = addToCart;
+window.updateItemQty = updateItemQty;
+window.removeFromCart = removeFromCart;
+window.openCartDrawer = openCartDrawer;
+window.closeCartDrawer = closeCartDrawer;
+window.scrollToMenu = scrollToMenu;
+window.openQuickView = openQuickView;
+window.closeQuickView = closeQuickView;
+window.addQuickViewToCart = addQuickViewToCart;
+window.openQrModal = openQrModal;
+window.closeQrModal = closeQrModal;
+window.copyPaymentNumber = copyPaymentNumber;
+window.togglePaymentMethodDetails = togglePaymentMethodDetails;
+window.toggleCashInput = toggleCashInput;
+window.submitWhatsAppOrder = submitWhatsAppOrder;
+window.captureCartFormStateFromDOM = captureCartFormStateFromDOM;
+window.updateCartUI = updateCartUI;
+window.renderMenu = renderMenu;
+
 // ==========================================================================
-// EVENT LISTENERS DOMContentLoaded
+// INICIALIZACIÓN DE LA APLICACIÓN
 // ==========================================================================
-document.addEventListener("DOMContentLoaded", () => {
+function initApp() {
   // Renderizar carta inicial, carrito y reseñas
   renderMenu();
   updateCartUI();
@@ -2249,4 +2269,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initApp);
+} else {
+  initApp();
+}
