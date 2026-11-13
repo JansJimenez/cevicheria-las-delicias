@@ -3,6 +3,12 @@
  * Sistema Interactivo de Menú, Carrito de Compras y Pedidos por WhatsApp
  */
 
+// Import Vercel Analytics
+import { inject } from '@vercel/analytics';
+
+// Initialize Vercel Analytics
+inject();
+
 // Teléfono oficial para pedidos por WhatsApp (Perú +51)
 // Puedes cambiar este número por el número real del negocio
 const WHATSAPP_PHONE = "51978213644";
