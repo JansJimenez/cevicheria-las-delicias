@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Cevichería Las Delicias | Bar - Cevichería La Curva</title>
-  <meta name="description" content="El mejor sabor marino y pesca del día en Bar - Cevichería La Curva 'Las Delicias'. Ceviches, jaleas, causas, arroces con mariscos y cocteles. ¡Pide directo por WhatsApp!">
+  <meta name="description"
+    content="El mejor sabor marino y pesca del día en Bar - Cevichería La Curva 'Las Delicias'. Ceviches, jaleas, causas, arroces con mariscos y cocteles. ¡Pide directo por WhatsApp!">
 
   <!-- Cabeceras de Seguridad Web (Defensa contra Inyecciones XSS y Clickjacking) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self';">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self';">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -17,14 +20,19 @@
   <!-- Google Fonts: Fredoka (encabezados redondeados y amigables) + Plus Jakarta Sans (cuerpo moderno y legible) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <!-- Font Awesome 6.5 (Iconos de alta calidad) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Estilos del Proyecto -->
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
   <!-- ==========================================================================
@@ -71,14 +79,16 @@
       <!-- Botones de Acción en el Header -->
       <div class="header-actions">
         <!-- Botón Ver Carrito -->
-        <button class="btn-header-cart" id="btnHeaderCart" onclick="openCartDrawer()" aria-label="Abrir Carrito de compras">
+        <button class="btn-header-cart" id="btnHeaderCart" onclick="openCartDrawer()"
+          aria-label="Abrir Carrito de compras">
           <i class="fa-solid fa-basket-shopping" style="color: var(--color-primary-blue);"></i>
           <span>Carrito</span>
           <span class="cart-counter-badge" id="headerCartBadge">0</span>
         </button>
 
         <!-- Botón WhatsApp Directo -->
-        <a href="https://wa.me/51978213644?text=Hola%20Cevicheria%20Las%20Delicias,%20deseo%20hacer%20una%20consulta" target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp">
+        <a href="https://wa.me/51978213644?text=Hola%20Cevicheria%20Las%20Delicias,%20deseo%20hacer%20una%20consulta"
+          target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp">
           <i class="fa-brands fa-whatsapp"></i>
           <span>Pedir por WhatsApp</span>
         </a>
@@ -110,18 +120,22 @@
         </div>
 
         <h1 class="hero-title">
-          Pescados y Mariscos <span class="highlight-gold">Frescos</span> con la Mejor Sazón en <span class="highlight-orange">La Curva</span>
+          Pescados y Mariscos <span class="highlight-gold">Frescos</span> con la Mejor Sazón en <span
+            class="highlight-orange">La Curva</span>
         </h1>
 
         <p class="hero-description">
-          Disfruta de nuestros generosos ceviches preparados al momento con limones frescos seleccionados, chicharrones crujientes, arroces marinos y bebidas refrescantes. ¡Elige tus platillos y haz tu pedido al instante por WhatsApp!
+          Disfruta de nuestros generosos ceviches preparados al momento con limones frescos seleccionados, chicharrones
+          crujientes, arroces marinos y bebidas refrescantes. ¡Elige tus platillos y haz tu pedido al instante por
+          WhatsApp!
         </p>
 
         <div class="hero-cta-group">
           <button class="btn-primary-order" onclick="scrollToMenu()">
             <i class="fa-solid fa-utensils"></i> Explorar la Carta
           </button>
-          <a href="https://wa.me/51978213644?text=Hola%20Cevicheria%20Las%20Delicias%20La%20Curva,%20quisiera%20hacer%20un%20pedido%20directo" target="_blank" rel="noopener noreferrer" class="btn-secondary-wa">
+          <a href="https://wa.me/51978213644?text=Hola%20Cevicheria%20Las%20Delicias%20La%20Curva,%20quisiera%20hacer%20un%20pedido%20directo"
+            target="_blank" rel="noopener noreferrer" class="btn-secondary-wa">
             <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> WhatsApp Directo
           </a>
         </div>
@@ -174,7 +188,9 @@
     <!-- Divisor de Ondas hacia la siguiente sección -->
     <div class="wave-divider">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+          class="shape-fill"></path>
       </svg>
     </div>
   </section>
@@ -237,7 +253,8 @@
           <div>
             <span class="promo-pill">⭐ COMBO PAREJA</span>
             <h3>Dúos Marinos</h3>
-            <p>Generosa porción de Ceviche fresco + Chicharrón de Pescado crujiente con yucas doradas y salsa tártara casera.</p>
+            <p>Generosa porción de Ceviche fresco + Chicharrón de Pescado crujiente con yucas doradas y salsa tártara
+              casera.</p>
           </div>
           <div class="promo-pricing-cta">
             <div class="promo-price-tag">
@@ -254,7 +271,8 @@
           <div>
             <span class="promo-pill">🔥 EL FAVORITO DE LA CURVA</span>
             <h3>Tríos Marinos</h3>
-            <p>El tridente marino completo: Ceviche fresco + Arroz con Mariscos humeante + Chicharrón crocante con salsa tártara.</p>
+            <p>El tridente marino completo: Ceviche fresco + Arroz con Mariscos humeante + Chicharrón crocante con salsa
+              tártara.</p>
           </div>
           <div class="promo-pricing-cta">
             <div class="promo-price-tag">
@@ -277,7 +295,8 @@
       <span class="section-subtitle-badge">Nuestra Carta Oficial</span>
       <h2 class="section-title">Elige tus Platillos <span>Favoritos</span></h2>
       <p class="section-desc">
-        Pescados y mariscos del día preparados al momento con ingredientes de primera. Añade tus platos y bebidas al carrito y envía tu pedido a WhatsApp con total facilidad.
+        Pescados y mariscos del día preparados al momento con ingredientes de primera. Añade tus platos y bebidas al
+        carrito y envía tu pedido a WhatsApp con total facilidad.
       </p>
     </div>
 
@@ -285,8 +304,10 @@
     <div class="menu-controls-wrapper">
       <!-- Buscador en tiempo real -->
       <div class="menu-search-box">
-        <input type="text" id="menuSearchInput" class="menu-search-input" placeholder="🔍 Buscar ceviche, arroz con marisco, chicharrón, trucha, bebida...">
-        <button type="button" class="search-icon-btn" id="searchClearBtn" onclick="handleSearchBtnClick()" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <input type="text" id="menuSearchInput" class="menu-search-input"
+          placeholder="🔍 Buscar ceviche, arroz con marisco, chicharrón, trucha, bebida...">
+        <button type="button" class="search-icon-btn" id="searchClearBtn" onclick="handleSearchBtnClick()"
+          aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
 
       <!-- Filtros por Categoría -->
@@ -337,10 +358,14 @@
         <span class="section-subtitle-badge">Nuestra Tradición y Sazón</span>
         <h2>Sabor, Frescura y Alegría en <span>Bar - Cevichería La Curva</span></h2>
         <p>
-          En <strong>Las Delicias</strong> nació el compromiso de traer el mejor sabor marino a nuestra querida tierra de <strong>Huayobamba, en la provincia de San Marcos – Cajamarca</strong>, combinando recetas tradicionales, porciones bien servidas y la calidez hospitalaria de nuestra gente.
+          En <strong>Las Delicias</strong> nació el compromiso de traer el mejor sabor marino a nuestra querida tierra
+          de <strong>Huayobamba, en la provincia de San Marcos – Cajamarca</strong>, combinando recetas tradicionales,
+          porciones bien servidas y la calidez hospitalaria de nuestra gente.
         </p>
         <p>
-          Cada mañana seleccionamos cuidadosamente pescados firmes, mariscos frescos y los mejores insumos locales para preparar cada plato al instante. Todo lo que sale de nuestra cocina está hecho en casa con dedicación, sazón tradicional y el cariño de nuestra familia para tu mesa.
+          Cada mañana seleccionamos cuidadosamente pescados firmes, mariscos frescos y los mejores insumos locales para
+          preparar cada plato al instante. Todo lo que sale de nuestra cocina está hecho en casa con dedicación, sazón
+          tradicional y el cariño de nuestra familia para tu mesa.
         </p>
 
         <div class="about-pillars">
@@ -391,7 +416,8 @@
       <button class="btn-leave-review" onclick="openReviewModal()">
         <i class="fa-solid fa-pen-to-square"></i> Dejar mi Reseña Verificada
       </button>
-      <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer" class="btn-gmaps-review">
+      <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer"
+        class="btn-gmaps-review">
         <i class="fa-brands fa-google"></i> Calificar en Google Maps
       </a>
     </div>
@@ -421,13 +447,14 @@
     <div class="location-container">
       <div class="location-info-card">
         <h3>Bar - Cevichería La Curva</h3>
-        
+
         <div class="info-item-row">
           <i class="fa-solid fa-map-location-dot"></i>
           <div>
             <h5>Nuestra Dirección</h5>
             <p>Avenida Cajamarca #800, C.P. Huayobamba, San Marcos – Cajamarca.</p>
-            <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer" class="link-open-gmaps">
+            <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer"
+              class="link-open-gmaps">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir en Google Maps
             </a>
           </div>
@@ -463,17 +490,13 @@
 
       <!-- Mapa interactivo referencial de la ubicación -->
       <div class="map-embed-wrapper">
-        <iframe 
-          title="Ubicación Cevichería Las Delicias - Huayobamba"
-          src="https://maps.google.com/maps?q=-7.316879,-78.179502&hl=es&z=17&output=embed" 
-          width="600" 
-          height="450" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy">
+        <iframe title="Ubicación Cevichería Las Delicias - Huayobamba"
+          src="https://maps.google.com/maps?q=-7.316879,-78.179502&hl=es&z=17&output=embed" width="600" height="450"
+          style="border:0;" allowfullscreen="" loading="lazy">
         </iframe>
         <div class="map-overlay-action">
-          <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer" class="btn-gmaps-direct">
+          <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer"
+            class="btn-gmaps-direct">
             <i class="fa-solid fa-map-location-dot"></i> Abrir en Google Maps
           </a>
         </div>
@@ -492,13 +515,22 @@
           <div class="footer-brand-title">Las <span>Delicias</span></div>
         </div>
         <p class="footer-desc">
-          Bar - Cevichería La Curva. Especialistas en pescados y mariscos preparados con la pesca más fresca y el amor por la cocina marina del Perú.
+          Bar - Cevichería La Curva. Especialistas en pescados y mariscos preparados con la pesca más fresca y el amor
+          por la cocina marina del Perú.
         </p>
         <div class="footer-social-links">
-          <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook" onclick="showToast('Encuéntranos como Bar - Cevichería La Curva Las Delicias');"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram" onclick="showToast('Síguenos como @LasDeliciasLaCurva');"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="TikTok" onclick="showToast('Síguenos en TikTok: Cevichería Las Delicias');"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="https://wa.me/51978213644" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer"
+            class="footer-social-btn" aria-label="Facebook"
+            onclick="showToast('Encuéntranos como Bar - Cevichería La Curva Las Delicias');"><i
+              class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer"
+            class="footer-social-btn" aria-label="Instagram"
+            onclick="showToast('Síguenos como @LasDeliciasLaCurva');"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://maps.app.goo.gl/W1SVaCa3sEYsEY257" target="_blank" rel="noopener noreferrer"
+            class="footer-social-btn" aria-label="TikTok"
+            onclick="showToast('Síguenos en TikTok: Cevichería Las Delicias');"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://wa.me/51978213644" target="_blank" rel="noopener noreferrer" class="footer-social-btn"
+            aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
       </div>
 
@@ -530,7 +562,8 @@
         <p class="footer-desc" style="margin-bottom: 12px;">
           Haz tus pedidos para delivery o recojo directo por WhatsApp de forma rápida y sencilla.
         </p>
-        <a href="https://wa.me/51978213644?text=Hola%20Cevicheria%20Las%20Delicias,%20deseo%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp" style="display: inline-flex;">
+        <a href="https://wa.me/51978213644?text=Hola%20Cevicheria%20Las%20Delicias,%20deseo%20hacer%20un%20pedido"
+          target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp" style="display: inline-flex;">
           <i class="fa-brands fa-whatsapp"></i> +51 978 213 644
         </a>
       </div>
@@ -553,7 +586,8 @@
         Tu Pedido <span id="drawerCartCount" style="font-size: 1rem; opacity: 0.9;">(0)</span>
       </h3>
       <div class="cart-header-actions">
-        <button type="button" class="btn-clear-cart-header" id="btnClearCart" onclick="clearCart()" title="Vaciar todo el carrito" style="display: none;">
+        <button type="button" class="btn-clear-cart-header" id="btnClearCart" onclick="clearCart()"
+          title="Vaciar todo el carrito" style="display: none;">
           <i class="fa-solid fa-trash-can"></i> Vaciar
         </button>
         <button class="btn-close-drawer" onclick="closeCartDrawer()" aria-label="Cerrar carrito">
@@ -583,14 +617,15 @@
       </button>
 
       <div class="modal-media-col">
-        <img id="modalDishImg" src="assets/images/ceviche-mixto.png" alt="Detalle del Platillo" class="modal-dish-img" onerror="this.src='assets/images/ceviche-simple.png'">
+        <img id="modalDishImg" src="assets/images/ceviche-mixto.png" alt="Detalle del Platillo" class="modal-dish-img"
+          onerror="this.src='assets/images/ceviche-simple.png'">
       </div>
 
       <div class="modal-info-col">
         <span class="modal-category-tag" id="modalDishCat">CATEGORÍA</span>
         <h3 class="modal-dish-name" id="modalDishTitle">Nombre del Plato</h3>
         <div class="modal-dish-price" id="modalDishPrice">S/ 0.00</div>
-        
+
         <p class="modal-dish-desc" id="modalDishDesc">Descripción detallada del platillo...</p>
 
         <div class="modal-spec-list">
@@ -604,22 +639,28 @@
           </div>
           <div class="modal-spec-item">
             <i class="fa-solid fa-carrot" style="color: var(--color-sunset-orange);"></i>
-            <span><strong>Ingredientes:</strong> <span id="modalDishIngredients">Pescado fresco, limón, ají limo...</span></span>
+            <span><strong>Ingredientes:</strong> <span id="modalDishIngredients">Pescado fresco, limón, ají
+                limo...</span></span>
           </div>
         </div>
 
         <div class="modal-custom-note-wrap">
-          <label for="modalDishNotes"><i class="fa-solid fa-pencil"></i> Nota especial para este plato (opcional):</label>
-          <input type="text" id="modalDishNotes" placeholder="Ej. Sin cebolla, poco picante, cancha aparte..." maxlength="100">
+          <label for="modalDishNotes"><i class="fa-solid fa-pencil"></i> Nota especial para este plato
+            (opcional):</label>
+          <input type="text" id="modalDishNotes" placeholder="Ej. Sin cebolla, poco picante, cancha aparte..."
+            maxlength="100">
         </div>
 
         <div class="modal-add-action">
           <div class="modal-qty-selector">
-            <button type="button" class="btn-qty" onclick="changeQuickViewQty(-1)" aria-label="Disminuir cantidad"><i class="fa-solid fa-minus"></i></button>
+            <button type="button" class="btn-qty" onclick="changeQuickViewQty(-1)" aria-label="Disminuir cantidad"><i
+                class="fa-solid fa-minus"></i></button>
             <span class="qty-val" id="quickViewQtyVal">1</span>
-            <button type="button" class="btn-qty" onclick="changeQuickViewQty(1)" aria-label="Aumentar cantidad"><i class="fa-solid fa-plus"></i></button>
+            <button type="button" class="btn-qty" onclick="changeQuickViewQty(1)" aria-label="Aumentar cantidad"><i
+                class="fa-solid fa-plus"></i></button>
           </div>
-          <button class="btn-primary-order" onclick="addQuickViewToCart()" style="flex: 1; justify-content: center; font-size: 1rem; padding: 12px 20px;">
+          <button class="btn-primary-order" onclick="addQuickViewToCart()"
+            style="flex: 1; justify-content: center; font-size: 1rem; padding: 12px 20px;">
             <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
           </button>
         </div>
@@ -632,13 +673,16 @@
        ========================================================================== -->
   <div class="floating-actions-container">
     <!-- Botón Flotante Carrito -->
-    <button class="floating-cart-btn" onclick="openCartDrawer()" title="Ver Carrito de Compras" aria-label="Abrir Carrito">
+    <button class="floating-cart-btn" onclick="openCartDrawer()" title="Ver Carrito de Compras"
+      aria-label="Abrir Carrito">
       <i class="fa-solid fa-basket-shopping"></i>
       <span class="floating-cart-badge" id="floatingCartBadge">0</span>
     </button>
 
     <!-- Botón Flotante WhatsApp -->
-    <a href="https://wa.me/51978213644?text=Hola%20Cevicheria%20Las%20Delicias%20La%20Curva,%20quisiera%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" class="floating-wa-btn" title="Contactar por WhatsApp" aria-label="Chatear por WhatsApp">
+    <a href="https://wa.me/51978213644?text=Hola%20Cevicheria%20Las%20Delicias%20La%20Curva,%20quisiera%20hacer%20un%20pedido"
+      target="_blank" rel="noopener noreferrer" class="floating-wa-btn" title="Contactar por WhatsApp"
+      aria-label="Chatear por WhatsApp">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
   </div>
@@ -649,7 +693,7 @@
       <button class="qr-modal-close" onclick="closeQrModal()" aria-label="Cerrar ventana">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      
+
       <div class="qr-modal-header">
         <div class="wallet-badges">
           <span class="wallet-badge yape-badge"><i class="fa-solid fa-mobile-screen"></i> Yape</span>
@@ -718,7 +762,8 @@
         <i class="fa-solid fa-shield-halved"></i>
         <div>
           <strong>Protección contra reseñas falsas:</strong>
-          Validamos tu reseña solicitando tu DNI de 8 dígitos para garantizar comensales reales. Tu DNI nunca será publicado ni compartido.
+          Validamos tu reseña solicitando tu DNI de 8 dígitos para garantizar comensales reales. Tu DNI nunca será
+          publicado ni compartido.
         </div>
       </div>
 
@@ -738,13 +783,16 @@
 
         <div class="form-group-review">
           <label for="reviewAuthorName">Tu Nombre Completo *</label>
-          <input type="text" id="reviewAuthorName" placeholder="Ej. Carlos Mendoza" maxlength="50" minlength="3" autocomplete="name" required oninput="filterOnlyLetters(this)">
+          <input type="text" id="reviewAuthorName" placeholder="Ej. Carlos Mendoza" maxlength="50" minlength="3"
+            autocomplete="name" required oninput="filterOnlyLetters(this)">
         </div>
 
         <div class="form-group-review">
           <label for="reviewAuthorDni">Número de DNI (8 dígitos) *</label>
-          <input type="text" id="reviewAuthorDni" placeholder="Ej. 12345678" maxlength="8" minlength="8" pattern="[0-9]{8}" inputmode="numeric" required oninput="filterOnlyDigits(this, 8)">
-          <span class="dni-helper-text"><i class="fa-solid fa-lock"></i> Exclusivo para verificación. No se muestra en público.</span>
+          <input type="text" id="reviewAuthorDni" placeholder="Ej. 12345678" maxlength="8" minlength="8"
+            pattern="[0-9]{8}" inputmode="numeric" required oninput="filterOnlyDigits(this, 8)">
+          <span class="dni-helper-text"><i class="fa-solid fa-lock"></i> Exclusivo para verificación. No se muestra en
+            público.</span>
         </div>
 
         <div class="form-group-review">
@@ -775,7 +823,9 @@
 
         <div class="form-group-review">
           <label for="reviewComment">Tu Reseña o Comentario *</label>
-          <textarea id="reviewComment" rows="3" placeholder="Cuéntanos qué tal estuvo el sabor, la frescura, el punto de ají y la atención..." required minlength="10" maxlength="350"></textarea>
+          <textarea id="reviewComment" rows="3"
+            placeholder="Cuéntanos qué tal estuvo el sabor, la frescura, el punto de ají y la atención..." required
+            minlength="10" maxlength="350"></textarea>
         </div>
 
         <button type="submit" class="btn-submit-review">
@@ -810,7 +860,8 @@
        MODAL: ANUNCIO DE BIENVENIDA E INDICACIÓN DE PAGO
        ========================================================================== -->
   <div class="welcome-notice-backdrop" id="welcomeNoticeBackdrop" onclick="closeWelcomeNotice(event)">
-    <div class="welcome-notice-card" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-labelledby="welcomeNoticeTitle">
+    <div class="welcome-notice-card" onclick="event.stopPropagation()" role="dialog" aria-modal="true"
+      aria-labelledby="welcomeNoticeTitle">
       <button type="button" class="qr-modal-close" onclick="closeWelcomeNotice()" aria-label="Cerrar anuncio">
         <i class="fa-solid fa-xmark"></i>
       </button>
@@ -831,7 +882,8 @@
       <div class="welcome-notice-message-box">
         <i class="fa-solid fa-circle-info"></i>
         <p>
-          <strong>"Todo pedido se realizará enviando el comprobante de pago (voucher de Yape o pago con billeteras digitales)"</strong>
+          <strong>"Todo pedido se realizará enviando el comprobante de pago (voucher de Yape o pago con billeteras
+            digitales)"</strong>
         </p>
       </div>
 
@@ -856,4 +908,5 @@
   <!-- Script Principal de la Aplicación -->
   <script src="app.js"></script>
 </body>
+
 </html>
